@@ -2,7 +2,7 @@
 
 Todo lo necesario para llevar a cabo un proyecto web de forma modular
 
-## Fase 1 - Base
+## ⭐ Fase 1 - Base
 
 - Estructura de carpetas src
 - Configuración prettier y oxlint
@@ -14,7 +14,7 @@ Todo lo necesario para llevar a cabo un proyecto web de forma modular
   - Sitemap
   - Robots
 
-### Tareas:
+### ⚙️ Tareas:
 
 - Actualizar: site: "https://www.example.com",
 - Decidir si va a ser Static Site or SSR, en el caso de ser SSR añadir el adaptador de cloudflare: https://docs.astro.build/es/guides/integrations-guide/cloudflare/
