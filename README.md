@@ -1,11 +1,11 @@
-# ASTRO BEDROCK
+# 👨‍🚀 ASTRO BEDROCK 🪐
 
 Todo lo necesario para llevar a cabo un proyecto web de forma modular
 
 ## ⭐ Fase 1 - Base
 
 - Estructura de carpetas src
-- Configuración prettier y oxlint
+- Configuración prettier (.vscode) y oxlint
 - Componentes essentials
 - Archivos globales Sass
 - Tsconfig.json & Alias
@@ -16,5 +16,9 @@ Todo lo necesario para llevar a cabo un proyecto web de forma modular
 
 ### ⚙️ Tareas:
 
-- Actualizar: site: "https://www.example.com",
-- Decidir si va a ser Static Site or SSR, en el caso de ser SSR añadir el adaptador de cloudflare: https://docs.astro.build/es/guides/integrations-guide/cloudflare/
+1.  Actualizar: site: "https://www.example.com" (astro.config.mjs),
+2.  Decidir si va a ser **Static Site or SSR**, en el caso de ser SSR añadir el adaptador de cloudflare: https://docs.astro.build/es/guides/integrations-guide/cloudflare/
+3.  Determinar los colores en variables.scss
+4.  ` npm run update 	`
+5.  Layout.astro: Cambiar las fuentes (default: Poppins) & defaults.scss cambiar la font-family
+6.  Añadir public/assets/logo.png

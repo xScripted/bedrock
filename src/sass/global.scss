@@ -1,0 +1,49 @@
+@import "defaults.scss";
+@import "variables.scss";
+@import "mixins.scss";
+
+.g-btn {
+  transition: 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--colorBorder);
+  border-radius: 20px;
+  padding: 15px 20px;
+  color: var(--colorText);
+  background-color: var(--colorBase);
+
+  &.radius20 {
+    border-radius: 20px;
+  }
+
+  &.main {
+    background-color: var(--colorBrand);
+    border: 1px solid var(--colorBrand);
+    color: #f1f1f1;
+
+    &:hover {
+      transition: 0.3s ease;
+      background-color: var(--colorBase);
+      color: var(--colorBrand);
+    }
+  }
+
+  &:hover {
+    transition: 0.3s ease;
+    background-color: var(--colorBackground);
+  }
+
+  &[disabled] {
+    cursor: unset;
+    border: 1px solid var(--colorBorder);
+    opacity: 0.3;
+  }
+}
+
+.g-wrapper {
+  max-width: $breakpoint;
+  padding: 0 20px;
+  margin: 0 auto;
+}
