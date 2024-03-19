@@ -12,8 +12,8 @@
     */
 
   import { formatPrice } from '@/utils/generic'
-  import Svg from '@/components/essentials/Svg.svelte'
   import { svgList } from '@/constants/svgStore'
+  import Svg from '@/components/essentials/Svg.svelte'
 
   export let id: string = '1'
   export let autocomplete: string = ''

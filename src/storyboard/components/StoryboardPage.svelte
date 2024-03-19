@@ -6,11 +6,24 @@
   /*⭐ Essentials*/
   import Input from '@/components/essentials/Input.svelte'
   import Checkbox from '@/components/essentials/Checkbox.svelte'
-  import DarkMode from '@/components/essentials/DarkMode.svelte'
   import Button from '@/components/essentials/Button.svelte'
+  import Range from '@/components/essentials/Range.svelte'
+  import Select from '@/components/essentials/Select.svelte'
+  import Menu from '@/components/essentials/menus/Menu.svelte'
+  import Footer from '@/components/essentials/footers/Footer.svelte'
+  import DarkMode from '@/components/essentials/DarkMode.svelte'
   import Svg from '@/components/essentials/Svg.svelte'
 
   /*🧩 Generic UI*/
+  import Card from '@/components/generic-ui/cards/Card.svelte'
+  import Modal from '@/components/generic-ui/Modal.svelte'
+  import Map from '@/components/generic-ui/Map.svelte'
+  import Opinions from '@/components/generic-ui/Opinions.svelte'
+  import Pagination from '@/components/generic-ui/Pagination.svelte'
+  import Faqs from '@/components/generic-ui/Faqs.svelte'
+  import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'
+  import Gallery from '@/components/generic-ui/Gallery.svelte'
+
   /*🧪 Miscellaneous*/
   /*🪄 Animations*/
 
@@ -56,6 +69,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         gap: 20px;
+        padding: 20px 0;
       }
 
       :global(.c-Input) {
@@ -87,6 +101,7 @@
       }
 
       .slot-buttons,
+      .slot-select,
       .slot-svgs {
         display: flex;
         justify-content: space-around;
@@ -110,6 +125,7 @@
           <div class="slot-inputs">
             <Input bind:value={inputDataExamples.text} label="Label" placeholder="Placeholder example, error=true" maxlength={10} error />
             <Input
+              id="1"
               bind:value={inputDataExamples.number}
               type="number"
               label="Type number"
@@ -123,6 +139,7 @@
             />
 
             <Input
+              id="2"
               bind:value={inputDataExamples.currency}
               type="currency"
               label="Type currency"
@@ -132,6 +149,7 @@
             />
 
             <Input
+              id="3"
               bind:value={inputDataExamples.email}
               type="email"
               label="Type email"
@@ -140,10 +158,10 @@
               sufix="€"
             />
 
-            <Input bind:value={inputDataExamples.phone} type="tel" label="Type tel (phone)" prefix="phone" />
-            <Input bind:value={inputDataExamples.password} type="password" label="Type password" />
+            <Input id="4" bind:value={inputDataExamples.phone} type="tel" label="Type tel (phone)" prefix="phone" />
+            <Input id="5" bind:value={inputDataExamples.password} type="password" label="Type password" />
 
-            <Input bind:value={inputDataExamples.textarea} type="textarea" label="Type textarea" />
+            <Input id="6" bind:value={inputDataExamples.textarea} type="textarea" label="Type textarea" />
           </div>
 
           <p class="object-example">
@@ -180,15 +198,43 @@
         <Component name="DateTime.svelte" importName="import DateTime from '@/components/essentials/DateTime.svelte'">Date'n Time</Component
         >
         <Component name="Range.svelte" importName="import Range from '@/components/essentials/Range.svelte'">Range</Component>
-        <Component name="Select.svelte" importName="import Select from '@/components/essentials/Select.svelte'">Select</Component>
+        <Component name="Select.svelte" importName="import Select from '@/components/essentials/Select.svelte'">
+          <div class="slot-select">
+            <Select options={['Pikachu', 'Charmander', 'Squirtle']} />
+            <Select
+              options={[
+                { main: 'Barcelona', sub: ['Centro', 'Gracia', 'Raval'] },
+                { main: 'Ripollet', sub: ['Centro', 'Norte', 'Sur'] },
+              ]}
+            />
+          </div>
+        </Component>
+      </div>
+
+      <h3>Menus</h3>
+      <div class="auto-columns">
+        <Component name="Menu.svelte" importName="import Menu from '@/components/essentials/menus/Menu.svelte'">
+          <Menu />
+        </Component>
+      </div>
+
+      <h3>Footers</h3>
+      <div class="auto-columns">
+        <Component name="Footer.svelte" importName="import Menu from '@/components/essentials/footers/Footer.svelte'">
+          <Footer />
+        </Component>
+      </div>
+
+      <h3>Others</h3>
+      <div class="auto-columns">
         <Component name="Darkmode.svelte" importName="import DarkMode from '@/components/essentials/DarkMode.svelte'">
           <DarkMode />
         </Component>
         <Component name="Svg.svelte" importName="import Svg from '@/components/essentials/Svg.svelte'">
           <div class="slot-svgs">
             <Svg name="twitter" />
-            <Svg name="twitter" width="50" height="50" />
-            <Svg name="twitter" fill="var(--colorBrand)" />
+            <Svg name="twitter" fill="var(--colorBrand)" width="50" height="50" />
+            <Svg name="twitter" />
           </div>
 
           <a href="/private/svgs" class="object-example">Visitar /private/svgs</a>
@@ -197,7 +243,20 @@
     </Dropdown>
 
     <Dropdown title="🧩 Generic UI">
-      <h3>Inputs</h3>
+      <div class="auto-columns">
+        <Component name="Card.svelte" importName="import Card from '@/components/generic-ui/cards/Card.svelte'">Card</Component>
+        <Component name="Modal.svelte" importName="import Modal from '@/components/generic-ui/Modal.svelte'">Modal</Component>
+        <Component name="Map.svelte" importName="import Map from '@/components/generic-ui/Map.svelte'">Map</Component>
+        <Component name="Opinions.svelte" importName="import Opinions from '@/components/generic-ui/Opinions.svelte'">Opinions</Component>
+        <Component name="Pagination.svelte" importName="import Pagination from '@/components/generic-ui/Pagination.svelte'"
+          >Pagination</Component
+        >
+        <Component name="Faqs.svelte" importName="import Faqs from '@/components/generic-ui/Faqs.svelte'">Faqs</Component>
+        <Component name="FaqsCategory.svelte" importName="import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'"
+          >FaqsCategory</Component
+        >
+        <Component name="Gallery.svelte" importName="import Gallery from '@/components/generic-ui/Gallery.svelte'">Gallery</Component>
+      </div>
     </Dropdown>
 
     <Dropdown title="🧪 Miscellaneous">
