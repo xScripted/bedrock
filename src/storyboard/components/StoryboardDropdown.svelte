@@ -2,12 +2,16 @@
   import Svg from '@/components/essentials/Svg.svelte'
 
   export let title: string = ''
-  export let open: boolean = false
+  export let open: boolean = true
 </script>
 
 <style lang="scss">
   .storyboard-dropdown {
     .header {
+      position: sticky;
+      top: 0;
+      background-color: var(--colorBackground);
+      z-index: 8;
       width: 100%;
       cursor: pointer;
       display: flex;

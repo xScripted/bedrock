@@ -56,6 +56,15 @@ button {
   outline: inherit;
 }
 
+input[type='checkbox'] {
+  cursor: pointer;
+  appearance: none;
+  background: none;
+  margin: 0;
+  border: none;
+  flex-shrink: 0;
+}
+
 hr {
   border: 0;
   border-bottom: 1px solid var(--colorBorder);

@@ -1,7 +1,18 @@
 <script lang="ts">
   import Svg from '@/components/essentials/Svg.svelte'
+  import Checkbox from '@/components/essentials/Checkbox.svelte'
+  import { onMount } from 'svelte'
+
+  onMount(() => document.body.setAttribute('theme', 'Bedrock'))
+
+  let activeTheme: string = 'Bedrock'
 
   const themes = [
+    {
+      name: 'Bedrock',
+      info: 'Una representación  gráfica de la fragilidad de las cosas bonitas.',
+      open: false,
+    },
     {
       name: 'Glassmorphism',
       info: 'Una representación  gráfica de la fragilidad de las cosas bonitas.',
@@ -27,6 +38,8 @@
 
 <style lang="scss">
   .menu {
+    position: sticky;
+    top: 0;
     width: 350px;
     height: 100vh;
 
@@ -69,6 +82,22 @@
 
           .name {
             font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+
+            .on {
+              height: 10px;
+              width: 10px;
+              background-color: var(--colorBrand);
+              border-radius: 50%;
+              opacity: 0;
+
+              &.active {
+                opacity: 1;
+              }
+            }
           }
 
           .more {
@@ -107,9 +136,12 @@
           <button
             class="name"
             on:click={() => {
-              document.body.setAttribute('theme', theme.name)
-            }}>{theme.name}</button
+              document.body.setAttribute('theme', (activeTheme = activeTheme === theme.name ? '' : theme.name))
+            }}
           >
+            <div class="on" class:active={activeTheme === theme.name} />
+            {theme.name}
+          </button>
           <button class="more" on:click={() => (theme.open = !theme.open)}>
             <Svg name="arrow" width="20" height="20" />
           </button>

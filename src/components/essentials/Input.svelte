@@ -28,10 +28,10 @@
   export let externalValidate = null
   export let theme: 'radius20' | '' = ''
   export let step: string = '1'
-  export let min: string | undefined = undefined
-  export let max: string | undefined = undefined
+  export let min: number | undefined = undefined
+  export let max: number | undefined = undefined
 
-  export let value: string | number = ' '
+  export let value: string | number = ''
 
   $: isError = error
 
@@ -52,10 +52,8 @@
     }
 
     if (type === 'number') {
-      if (max && value > max) event.target.value = max
-      if (min && value < min) event.target.value = min
-
-      event.target.value = parseFloat(event.target.value.toString().slice(0, maxlength))
+      if (max && parseFloat(event.target.value) > max) event.target.value = max
+      if (min && parseFloat(event.target.value) < min) event.target.value = min
     }
   }
 
@@ -71,7 +69,7 @@
   }
 
   const sufixClick = () => {
-    if (sufix === 'eye' || 'eyeClosed') {
+    if (sufix === 'eye' || sufix === 'eyeClosed') {
       type = type === 'password' ? 'text' : 'password'
       sufix = type === 'password' ? 'eyeClosed' : 'eye'
     }
@@ -85,12 +83,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 10px;
-    padding: 15px 0;
-
-    &.withLabel {
-      padding-top: 25px;
-    }
 
     input {
       font-size: 16px;
@@ -145,6 +137,7 @@
         }
       }
     }
+
     .error {
       position: absolute;
       display: flex;
@@ -152,7 +145,7 @@
       gap: 5px;
       color: $errorColor;
       font-size: 12px;
-      bottom: -8px;
+      bottom: -25px;
       opacity: 0.8;
 
       :global(svg) {
@@ -242,7 +235,7 @@
 
   {#if isError}
     <span class="error">
-      <Svg name="error" width="18" />
+      <Svg name="error" width="15" />
       {errorMessage}
     </span>
   {/if}

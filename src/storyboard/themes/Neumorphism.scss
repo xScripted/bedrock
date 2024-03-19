@@ -1,9 +1,15 @@
 [theme='Neumorphism'] {
   .input-wrapper {
+    padding: 15px 0;
+
+    &.withLabel {
+      padding-top: 25px;
+    }
+
     label {
       position: absolute;
       left: 20px;
-      top: 10px;
+      top: 9px;
       transition: 0.3s ease;
       transform: translateY(35px) scale(1.4);
       transform-origin: left;
@@ -19,10 +25,19 @@
       border: 0;
       padding: 10px 20px;
       border-radius: 20px;
-      background: var(--colorBackground);
-      box-shadow:
+      background: white;
+      /*box-shadow:
         5px 5px 8px rgb(206, 206, 206),
-        -5px -5px 8px var(--colorBase);
+        -5px -5px 8px var(--colorBase);*/
+
+      box-shadow:
+        20px 20px 60px #d9d9d9,
+        -20px -20px 60px #ffffff;
+    }
+
+    .error {
+      bottom: -10px !important;
+      left: 20px;
     }
   }
 }
