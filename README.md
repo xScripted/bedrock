@@ -22,3 +22,10 @@ Todo lo necesario para llevar a cabo un proyecto web de forma modular
 4.  ` npm run update 	`
 5.  Layout.astro: Cambiar las fuentes (default: Poppins) & defaults.scss cambiar la font-family
 6.  Añadir public/assets/logo.png
+
+## 🖇️ Bibliografía:
+
+Emojis: https://es.piliapp.com/emoji/list/
+Glassmorphism 1: https://css.glass/
+Glassmorphism 2:https://ui.glass/generator/
+Neumorphism: https://neumorphism.io/#e0e0e0

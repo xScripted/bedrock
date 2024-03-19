@@ -1,12 +1,12 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+import StoryboardPage from '@/storyboard/components/StoryboardPage.svelte'
 ---
 
-<style lang="scss">
-  h1 {
-  }
+<style is:global>
+  @import '../../storyboard/themes/index.scss';
 </style>
 
 <Layout title="📋 Storyboard">
-  <h1>Storyboard</h1>
+  <StoryboardPage client:load />
 </Layout>
