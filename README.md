@@ -25,7 +25,7 @@ Todo lo necesario para llevar a cabo un proyecto web de forma modular
 
 ## 🖇️ Bibliografía:
 
-Emojis: https://es.piliapp.com/emoji/list/
-Glassmorphism 1: https://css.glass/
-Glassmorphism 2:https://ui.glass/generator/
-Neumorphism: https://neumorphism.io/#e0e0e0
+- Emojis: https://es.piliapp.com/emoji/list/
+- Glassmorphism 1: https://css.glass/
+- Glassmorphism 2:https://ui.glass/generator/
+- Neumorphism: https://neumorphism.io/#e0e0e0
