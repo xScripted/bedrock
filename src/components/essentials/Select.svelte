@@ -5,7 +5,8 @@
     sub: string[]
   }
 
-  export let options: string[] | IOptions[] = []
+  export let options: string[] /*| IOptions[]*/ = []
+  export let name: string = ''
   let open: boolean = false
   let chosen: string = 'Select'
 
@@ -65,12 +66,28 @@
       border: 1px solid var(--colorBrand);
       overflow: hidden;
 
-      .option {
+      .option,
+      .delete {
         width: 100%;
+
+        display: flex;
+        justify-content: left;
 
         padding: 5px 10px;
         color: var(--colorBrand);
         cursor: pointer;
+
+        &:hover {
+          background-color: var(--colorBrand);
+          color: var(--colorBase);
+        }
+      }
+
+      .delete {
+        border-top: 1px solid var(--colorBrand);
+        margin-top: 10px;
+        font-size: 13px;
+        opacity: 0.5;
 
         &:hover {
           background-color: var(--colorBrand);
@@ -83,16 +100,18 @@
 
 <div class="select" class:open>
   <div class="unfold">
+    <Svg {name} fill="var(--colorBrand)" height="20" width="20" />
     <span>{chosen}</span>
     <button class="arrow" on:click={() => (open = !open)}>
       <Svg name="arrow" fill="var(--colorBrand)" />
     </button>
   </div>
-  {#if isSimple}
-    <div class="options">
-      {#each options as option}
-        <div class="option">{option}</div>
+  <div class="options">
+    {#if isSimple}
+      {#each options as option, i}
+        <button class="option" on:click={() => (chosen = option)}>{option}</button>
       {/each}
-    </div>
-  {/if}
+    {/if}
+    <button class="delete" on:click={() => (chosen = 'Select')}>Delete selection</button>
+  </div>
 </div>

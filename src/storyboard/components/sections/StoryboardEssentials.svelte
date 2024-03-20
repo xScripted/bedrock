@@ -106,13 +106,14 @@
 
     <Component name="Select.svelte" importName="import Select from '@/components/essentials/Select.svelte'">
       <div class="flex-around">
-        <Select options={['Pikachu', 'Charmander', 'Squirtle']} />
-        <Select
+        <Select options={['Pikachu', 'Charmander', 'Squirtle']} name="phone" />
+        <!--<Select
+          name="phone"
           options={[
             { main: 'Barcelona', sub: ['Centro', 'Gracia', 'Raval'] },
             { main: 'Ripollet', sub: ['Centro', 'Norte', 'Sur'] },
           ]}
-        />
+        />-->
       </div>
     </Component>
 
