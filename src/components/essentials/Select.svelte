@@ -5,12 +5,17 @@
     sub: string[]
   }
 
-  export let options: string[] /*| IOptions[]*/ = []
+  export let options: /*string[] |*/ IOptions[] = []
   export let name: string = ''
   let open: boolean = false
   let chosen: string = 'Select'
+  let subChosen: string = ''
 
   const isSimple: boolean = typeof options[0] === 'string'
+
+  /*if(isSimple) {
+    options: string[] | IOptions[] = []
+  }*/
 </script>
 
 <style lang="scss">
@@ -83,6 +88,15 @@
         }
       }
 
+      .main {
+        font-weight: 500;
+      }
+
+      .sub {
+        font-size: 13px;
+        margin-left: 5px;
+      }
+
       .delete {
         border-top: 1px solid var(--colorBrand);
         margin-top: 10px;
@@ -102,14 +116,25 @@
   <div class="unfold">
     <Svg {name} fill="var(--colorBrand)" height="20" width="20" />
     <span>{chosen}</span>
+    {#if !isSimple}
+      <span>{subChosen}</span>
+    {/if}
     <button class="arrow" on:click={() => (open = !open)}>
       <Svg name="arrow" fill="var(--colorBrand)" />
     </button>
   </div>
   <div class="options">
     {#if isSimple}
-      {#each options as option, i}
-        <button class="option" on:click={() => (chosen = option)}>{option}</button>
+      {#each options as option}
+        <button class="option">{option}</button>
+        <!--<button class="option" on:click={() => (chosen = option)}>{option}</button>-->
+      {/each}
+    {:else}
+      {#each options as option}
+        <button class="option main" on:click={() => (chosen = option.main)}>{option.main}</button>
+        {#each option.sub as sub}
+          <button class="option sub" on:click={() => (subChosen = sub)}>{sub}</button>
+        {/each}
       {/each}
     {/if}
     <button class="delete" on:click={() => (chosen = 'Select')}>Delete selection</button>
