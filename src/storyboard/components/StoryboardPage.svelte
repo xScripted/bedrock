@@ -15,7 +15,7 @@
   import Svg from '@/components/essentials/Svg.svelte'
 
   /*🧩 Generic UI*/
-  import Card from '@/components/generic-ui/cards/Card.svelte'
+  import Card from '@/components/generic-ui/cards/Card2.svelte'
   import Modal from '@/components/generic-ui/Modal.svelte'
   import Map from '@/components/generic-ui/Map.svelte'
   import Opinions from '@/components/generic-ui/Opinions.svelte'
@@ -98,6 +98,13 @@
         grid-gap: 25px;
         justify-items: center;
         padding: 20px 0;
+      }
+
+      .slot-cards {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
       }
 
       .slot-buttons,
@@ -244,7 +251,11 @@
 
     <Dropdown title="🧩 Generic UI">
       <div class="auto-columns">
-        <Component name="Card.svelte" importName="import Card from '@/components/generic-ui/cards/Card.svelte'">Card</Component>
+        <Component name="Card.svelte" importName="import Card from '@/components/generic-ui/cards/Card.svelte'">
+          <div class="slot-cards">
+            <Card icon="twitter" title="Comprar un inmueble" subtitle="Encuentra tu nuevo hogar con nosotros" />
+          </div>
+        </Component>
         <Component name="Modal.svelte" importName="import Modal from '@/components/generic-ui/Modal.svelte'">Modal</Component>
         <Component name="Map.svelte" importName="import Map from '@/components/generic-ui/Map.svelte'">Map</Component>
         <Component name="Opinions.svelte" importName="import Opinions from '@/components/generic-ui/Opinions.svelte'">Opinions</Component>
