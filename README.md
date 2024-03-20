@@ -21,7 +21,7 @@ Todo lo necesario para llevar a cabo un proyecto web de forma modular
 3.  Determinar los colores en variables.scss
 4.  ` npm run update 	`
 5.  Layout.astro: Cambiar las fuentes (default: Poppins) & defaults.scss cambiar la font-family
-6.  Añadir public/assets/logo.png
+6.  Añadir logo a public/assets/favicon.svg
 7.  Elegir theme, copiar el scss de storyboard/components/themes a /sass e importarlo en global.scss
 
 ## 🖇️ Bibliografía:
