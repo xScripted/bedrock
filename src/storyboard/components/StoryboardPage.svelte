@@ -89,6 +89,8 @@
 
     <Animations />
 
+    <Dropdown title="🌐 Interest pages"></Dropdown>
+
     <Dropdown title="📌 Tasks">
       <div class="tasks">
         <div class="task">
