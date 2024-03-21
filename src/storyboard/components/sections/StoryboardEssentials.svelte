@@ -108,7 +108,11 @@
       </p>
     </Component>
 
-    <Component name="Select.svelte" importName="import Select from '@/components/essentials/Select.svelte'">
+    <Component
+      name="Select.svelte"
+      importName="import Select from '@/components/essentials/Select.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
       <Select icon="whatsapp" options={['Pikachu', 'Charmander', 'Squirtle']} />
       <Select
         options={[

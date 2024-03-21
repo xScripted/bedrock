@@ -85,7 +85,7 @@
     <Component
       name="Map.svelte"
       importName="import Map from '@/components/generic-ui/Map.svelte'"
-      attributes={{ done: true, hydrate: true, responsive: true }}
+      attributes={{ done: true, hydrate: true, responsive: true, bugs: true }}
     >
       <Map lat={41.390205} long={2.154007} zoom={11} />
     </Component>

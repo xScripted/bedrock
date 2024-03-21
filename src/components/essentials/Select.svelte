@@ -63,6 +63,12 @@
 
     position: relative;
 
+    &.isSimple {
+      .main {
+        font-weight: 400 !important;
+      }
+    }
+
     .select {
       display: flex;
       justify-content: space-between;
@@ -77,15 +83,21 @@
       width: 225px;
       background-color: var(--colorBase);
 
-      .value {
+      .name {
         display: flex;
-        flex-direction: column;
-        width: 125px;
-        text-align: left;
+        align-items: center;
+        gap: 10px;
 
-        .placeholder {
-          color: var(--colorText2);
-          font-weight: 500;
+        .value {
+          display: flex;
+          flex-direction: column;
+          width: 125px;
+          text-align: left;
+
+          .placeholder {
+            color: var(--colorText2);
+            font-weight: 500;
+          }
         }
 
         .child {
@@ -132,8 +144,7 @@
 
       .child {
         font-weight: lighter;
-        padding: 5px 10px;
-        margin-left: 8px;
+        padding: 5px 18px;
         color: var(--colorText2);
 
         &:hover {

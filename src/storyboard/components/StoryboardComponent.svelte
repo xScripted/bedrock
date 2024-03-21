@@ -58,6 +58,7 @@
         gap: 0px;
         right: 10px;
         top: 10px;
+        cursor: default;
       }
     }
   }
