@@ -14,6 +14,39 @@
   import Gallery from '@/components/generic-ui/Gallery.svelte'
 
   let modal: boolean = false
+
+  const faqsCategoryData = [
+    {
+      question: '¿Cómo puedo programar una visita a una propiedad?',
+      answer:
+        'Puedes programar una visita a través de nuestra página web, seleccionando la propiedad de tu interés y eligiendo la fecha y hora que mejor te convenga. También puedes llamar a nuestra oficina para agendar una visita.',
+      category: 'Visitas',
+    },
+    {
+      question: '¿Qué necesito para poder alquilar una propiedad?',
+      answer:
+        'Para alquilar una propiedad, necesitarás presentar una identificación válida, prueba de ingresos, referencias de alquiler anteriores y, en algunos casos, un informe de crédito. Nuestro equipo te guiará a través del proceso de aplicación.',
+      category: 'Alquilar',
+    },
+    {
+      question: '¿Puedo comprar una propiedad si soy extranjero?',
+      answer:
+        'Sí, los extranjeros pueden comprar propiedades en nuestra región. Sin embargo, hay algunos requisitos adicionales y es posible que necesites asistencia legal. Nuestro equipo está aquí para ayudarte en cada paso del proceso.',
+      category: 'Compra',
+    },
+    {
+      question: '¿Qué gastos adicionales debo considerar al comprar una casa?',
+      answer:
+        'Al comprar una casa, debes considerar gastos adicionales como impuestos de transmisión, gastos de notaría, tasas de registro, y posiblemente, costos de renovación o reparación. Te proporcionaremos una estimación detallada de estos costos para la propiedad de tu interés.',
+      category: 'Compra',
+    },
+    {
+      question: '¿Cómo puedo listar mi propiedad para la venta o alquiler?',
+      answer:
+        'Para listar tu propiedad con nosotros, simplemente contacta a nuestra oficina y uno de nuestros agentes se pondrá en contacto contigo para programar una evaluación de tu propiedad y discutir los siguientes pasos.',
+      category: 'Alquilar',
+    },
+  ]
 </script>
 
 <style lang="scss">
@@ -57,9 +90,9 @@
 
     <Component name="Faqs.svelte" importName="import Faqs from '@/components/generic-ui/Faqs.svelte'">Faqs</Component>
 
-    <Component name="FaqsCategory.svelte" importName="import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'"
-      >FaqsCategory</Component
-    >
+    <Component name="FaqsCategory.svelte" importName="import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'">
+      <FaqsCategory faqsCategories={faqsCategoryData} />
+    </Component>
 
     <Component name="Gallery.svelte" importName="import Gallery from '@/components/generic-ui/Gallery.svelte'">Gallery</Component>
   </div>
