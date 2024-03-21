@@ -4,7 +4,7 @@
   import Button from '@/components/essentials/Button.svelte'
 
   /*🧩 Generic UI*/
-  import Card from '@/components/generic-ui/cards/Card2.svelte'
+  import Card from '@/components/generic-ui/cards/Card.svelte'
   import Modal from '@/components/generic-ui/Modal.svelte'
   import Map from '@/components/generic-ui/Map.svelte'
   import Opinions from '@/components/generic-ui/Opinions.svelte'
@@ -29,7 +29,7 @@
   <div class="auto-columns wide">
     <Component name="Card.svelte" importName="import Card from '@/components/generic-ui/cards/Card.svelte'">
       <div class="slot-cards">
-        <Card icon="twitter" title="Comprar un inmueble" subtitle="Encuentra tu nuevo hogar con nosotros" />
+        <Card name="twitter" title="Comprar un inmueble" subtitle="Encuentra tu nuevo hogar con nosotros" />
       </div>
     </Component>
 
