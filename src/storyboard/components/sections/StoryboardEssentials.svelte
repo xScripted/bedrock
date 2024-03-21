@@ -56,7 +56,11 @@
   <h3>Form Inputs</h3>
 
   <div class="auto-columns">
-    <Component name="Input.svelte" importName="import Input from '@/components/essentials/Input.svelte'">
+    <Component
+      name="Input.svelte"
+      importName="import Input from '@/components/essentials/Input.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
       <div class="slot-inputs">
         <Input bind:value={inputDataExamples.text} label="Label" placeholder="Placeholder example, error=true" maxlength={10} error />
         <Input
@@ -105,18 +109,20 @@
     </Component>
 
     <Component name="Select.svelte" importName="import Select from '@/components/essentials/Select.svelte'">
-      <div class="flex-around">
-        <Select options={['Pikachu', 'Charmander', 'Squirtle']} />
-        <Select
-          options={[
-            { main: 'Barcelona', children: ['Centro', 'Gracia', 'Raval'] },
-            { main: 'Ripollet', children: ['Centro', 'Norte', 'Sur'] },
-          ]}
-        />
-      </div>
+      <Select icon="whatsapp" options={['Pikachu', 'Charmander', 'Squirtle']} />
+      <Select
+        options={[
+          { main: 'Barcelona', children: ['Centro', 'Gracia', 'Raval'] },
+          { main: 'Ripollet', children: ['Centro', 'Norte', 'Sur'] },
+        ]}
+      />
     </Component>
 
-    <Component name="Checkbox.svelte" importName="import Checkbox from '@/components/essentials/Checkbox.svelte'">
+    <Component
+      name="Checkbox.svelte"
+      importName="import Checkbox from '@/components/essentials/Checkbox.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
       <div class="slot-checkboxes">
         <Checkbox bind:value={checkboxDataExamples.checkbox_A} />
         <Checkbox bind:value={checkboxDataExamples.toggle_A} toggle />
@@ -138,7 +144,11 @@
 
   <h3>Others</h3>
   <div class="auto-columns">
-    <Component name="Button.svelte" importName="import Button from '@/components/essentials/Button.svelte'">
+    <Component
+      name="Button.svelte"
+      importName="import Button from '@/components/essentials/Button.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
       <div class="flex-around">
         <Button type="main" click={() => alert('Button clicked!')}>
           <span>Main</span>
@@ -152,11 +162,19 @@
       </div>
     </Component>
 
-    <Component name="Darkmode.svelte" importName="import DarkMode from '@/components/essentials/DarkMode.svelte'">
+    <Component
+      name="Darkmode.svelte"
+      importName="import DarkMode from '@/components/essentials/DarkMode.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
       <DarkMode />
     </Component>
 
-    <Component name="Svg.svelte" importName="import Svg from '@/components/essentials/Svg.svelte'">
+    <Component
+      name="Svg.svelte"
+      importName="import Svg from '@/components/essentials/Svg.svelte'"
+      attributes={{ done: true, responsive: true }}
+    >
       <div class="flex-around">
         <Svg name="twitter" />
         <Svg name="twitter" fill="var(--colorBrand)" width="50" height="50" />

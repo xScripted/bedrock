@@ -33,6 +33,11 @@
       info: 'sfusgdhdasdasdafsd',
       open: false,
     },
+    {
+      name: 'Neon',
+      info: 'sfusgdhdasdasdafsd',
+      open: false,
+    },
   ]
 </script>
 

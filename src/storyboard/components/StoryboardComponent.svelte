@@ -1,6 +1,15 @@
 <script lang="ts">
+  interface IAttributes {
+    done?: boolean
+    hydrate?: boolean
+    experimental?: boolean
+    bugs?: boolean
+    responsive?: boolean
+  }
+
   export let name: string = ''
   export let importName: string = ''
+  export let attributes: IAttributes = {}
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(importName)
@@ -9,6 +18,7 @@
 
 <style lang="scss">
   .component {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -41,6 +51,14 @@
           opacity: 1;
         }
       }
+
+      .attributes {
+        position: absolute;
+        display: flex;
+        gap: 0px;
+        right: 10px;
+        top: 10px;
+      }
     }
   }
 </style>
@@ -49,6 +67,22 @@
   <div class="header">
     <div class="name">{name}</div>
     <button class="importName" on:click={copyToClipboard}>{importName}</button>
+
+    <div class="attributes">
+      <div title={attributes.done ? 'Done!' : 'In progress'}>{attributes.done ? '✅' : '⚙️'}</div>
+
+      {#if attributes.hydrate}
+        <div title="Needs to hydrate client:load">💧</div>
+      {/if}
+
+      {#if attributes.bugs}
+        <div title="Has bugs to repair">🪳</div>
+      {/if}
+
+      {#if attributes.responsive}
+        <div title="Responsive tested & approved!">📱</div>
+      {/if}
+    </div>
   </div>
 
   <slot />

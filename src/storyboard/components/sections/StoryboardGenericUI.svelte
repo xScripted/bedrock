@@ -66,7 +66,11 @@
       </div>
     </Component>
 
-    <Component name="Modal.svelte" importName="import Modal from '@/components/generic-ui/Modal.svelte'">
+    <Component
+      name="Modal.svelte"
+      importName="import Modal from '@/components/generic-ui/Modal.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true, bugs: true }}
+    >
       <Modal bind:open={modal} padding="20px">
         <div slot="modal-header">
           <h2>Example modal title</h2>
@@ -78,19 +82,31 @@
       <Button click={() => (modal = !modal)}>Open modal</Button>
     </Component>
 
-    <Component name="Map.svelte" importName="import Map from '@/components/generic-ui/Map.svelte'">
+    <Component
+      name="Map.svelte"
+      importName="import Map from '@/components/generic-ui/Map.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
       <Map lat={41.390205} long={2.154007} zoom={11} />
     </Component>
 
     <Component name="Opinions.svelte" importName="import Opinions from '@/components/generic-ui/Opinions.svelte'">Opinions</Component>
 
-    <Component name="Pagination.svelte" importName="import Pagination from '@/components/generic-ui/Pagination.svelte'">
+    <Component
+      name="Pagination.svelte"
+      importName="import Pagination from '@/components/generic-ui/Pagination.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: false }}
+    >
       <Pagination currentPage={2} totalPages={20} />
     </Component>
 
     <Component name="Faqs.svelte" importName="import Faqs from '@/components/generic-ui/Faqs.svelte'">Faqs</Component>
 
-    <Component name="FaqsCategory.svelte" importName="import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'">
+    <Component
+      name="FaqsCategory.svelte"
+      importName="import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
       <FaqsCategory faqsCategories={faqsCategoryData} />
     </Component>
 
