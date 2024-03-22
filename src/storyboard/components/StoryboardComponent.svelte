@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
+
   interface IAttributes {
     done?: boolean
     hydrate?: boolean
@@ -17,11 +19,19 @@
     navigator.clipboard.writeText(importName)
   }
 
-  $: document.body.style.overflowY = expanded ? 'hidden' : 'auto'
-
   const onKeyDown = (ev) => {
     if (ev.keyCode === 27) expanded = false
   }
+
+  let overflow = () => {}
+
+  $: expanded, overflow()
+
+  onMount(() => {
+    overflow = () => {
+      document.body.style.overflowY = expanded ? 'hidden' : 'auto'
+    }
+  })
 </script>
 
 <style lang="scss">

@@ -2,7 +2,7 @@
   import Svg from '@/components/essentials/Svg.svelte'
 
   export let title: string = ''
-  export let open: boolean = false
+  export let open: boolean = true
 </script>
 
 <style lang="scss">
