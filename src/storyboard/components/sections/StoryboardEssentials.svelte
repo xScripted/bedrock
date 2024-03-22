@@ -143,7 +143,9 @@
 
     <Component name="DateTime.svelte" importName="import DateTime from '@/components/essentials/DateTime.svelte'">Date'n Time</Component>
 
-    <Component name="Range.svelte" importName="import Range from '@/components/essentials/Range.svelte'">Range</Component>
+    <Component name="Range.svelte" importName="import Range from '@/components/essentials/Range.svelte'">
+      <Range />
+    </Component>
   </div>
 
   <h3>Others</h3>
