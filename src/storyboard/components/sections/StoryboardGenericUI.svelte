@@ -12,6 +12,7 @@
   import Faqs from '@/components/generic-ui/Faqs.svelte'
   import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'
   import Gallery from '@/components/generic-ui/Gallery.svelte'
+  import ContactForm from '@/components/generic-ui/ContactForm.svelte'
 
   let modal: boolean = false
 
@@ -51,9 +52,19 @@
 
 <style lang="scss">
   .slot-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding-bottom: 20px;
+
+    :global(.card) {
+      height: fit-content;
+    }
+  }
+
+  .slot-cards-hor {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     gap: 20px;
   }
 </style>
@@ -62,7 +73,65 @@
   <div class="auto-columns wide">
     <Component name="Card.svelte" importName="import Card from '@/components/generic-ui/cards/Card.svelte'">
       <div class="slot-cards">
-        <Card name="twitter" title="Comprar un inmueble" subtitle="Encuentra tu nuevo hogar con nosotros" />
+        <Card title="Noteworthy technology acquisitions 2021" />
+        <Card
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+
+        <Card
+          href="/"
+          icon="twitter"
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+
+        <Card
+          icon="twitter"
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+
+        <Card
+          image="https://flowbite-svelte.com/images/image-1.webp"
+          icon="twitter"
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+
+        <Card
+          image="https://flowbite-svelte.com/images/image-1.webp"
+          title="Noteworthy technology acquisitions 2021"
+          reverse
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+
+        <Card
+          title="Noteworthy technology acquisitions 2021"
+          reverse
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        >
+          <Button>Button example</Button>
+        </Card>
+      </div>
+
+      <div class="slot-cards-hor">
+        <Card
+          image="https://flowbite-svelte.com/images/image-1.webp"
+          horizontal
+          icon="twitter"
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+
+        <Card
+          image="https://flowbite-svelte.com/images/image-1.webp"
+          horizontal
+          reverse
+          icon="twitter"
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
       </div>
     </Component>
 
@@ -111,5 +180,8 @@
     </Component>
 
     <Component name="Gallery.svelte" importName="import Gallery from '@/components/generic-ui/Gallery.svelte'">Gallery</Component>
+    <Component name="ContactForm.svelte" importName="import ContactForm from '@/components/generic-ui/ContactForm.svelte'">
+      <ContactForm />
+    </Component>
   </div>
 </Dropdown>

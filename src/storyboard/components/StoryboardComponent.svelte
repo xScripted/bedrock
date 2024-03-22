@@ -27,6 +27,15 @@
     padding: 20px;
     background-color: var(--colorBase);
 
+    &.expanded {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100dvh;
+      z-index: 99;
+    }
+
     .header {
       grid-column: span 2;
 

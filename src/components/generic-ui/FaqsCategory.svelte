@@ -30,6 +30,7 @@
     width: 100%;
     max-width: 700px;
     border: 1px solid var(--colorBorder);
+    border-radius: var(--radius);
 
     @include notDesktop {
       flex-direction: column;

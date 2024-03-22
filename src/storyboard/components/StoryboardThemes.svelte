@@ -9,11 +9,6 @@
 
   const themes = [
     {
-      name: 'Bedrock',
-      info: 'Una representación  gráfica de la fragilidad de las cosas bonitas.',
-      open: false,
-    },
-    {
       name: 'Glassmorphism',
       info: 'Una representación  gráfica de la fragilidad de las cosas bonitas.',
       open: false,

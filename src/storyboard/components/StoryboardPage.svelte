@@ -15,7 +15,7 @@
       font-weight: bold;
     }
 
-    :global(h3) {
+    :global(.storyboard-title) {
       font-size: 20px;
       color: var(--colorText2);
       text-align: center;

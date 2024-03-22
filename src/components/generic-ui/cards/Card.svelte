@@ -2,85 +2,87 @@
   import Svg from '@/components/essentials/Svg.svelte'
 
   export let title: string = ''
-  export let subtitle: string = ''
-  export let name: string = ''
+  export let description: string = ''
+  export let icon: string = ''
+  export let image: string = ''
+  export let href: string = ''
+  export let horizontal: boolean = false
+  export let reverse: boolean = false
 </script>
 
 <style lang="scss">
-  .card {
-    height: 250px;
-    width: 250px;
+  @import '../../../sass/mixins.scss';
 
+  .card {
+    border: 1px solid var(--colorBorder);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    overflow: hidden;
+    border-radius: var(--radius);
 
-    background-color: var(--colorBackground);
-    border-radius: 10px;
-    padding: 20px;
+    &.reverse {
+      flex-direction: column-reverse;
+    }
 
-    transition: 0.2s ease;
-    cursor: pointer;
+    &.horizontal {
+      &.reverse {
+        flex-direction: row-reverse;
 
-    .icon {
+        @include notDesktop {
+          flex-direction: column-reverse;
+        }
+      }
+
+      @include desktop {
+        flex-direction: row;
+
+        img {
+          max-width: 200px;
+        }
+      }
+    }
+
+    img {
       width: 100%;
-      height: 100%;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: -20px;
+      object-fit: cover;
     }
 
     .content {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      padding: 20px;
 
       .title {
-        font-weight: 500;
-        color: var(--colorText1);
+        font-size: 24px;
+        color: var(--colorText);
       }
-
-      .subtitle {
-        height: fit-content;
-        width: 100%;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 15px;
-
-        span {
-          color: var(--colorText2);
-          font-size: 14px;
-        }
-
-        .arrow {
-          transform: rotate(-90deg);
-          margin-right: -10px;
-        }
+      .description {
+        color: var(--colorText2);
       }
-    }
-
-    &:hover {
-      transform: scale(0.9);
-      transition: 0.3s ease;
     }
   }
 </style>
 
-<div class="card">
-  <div class="icon">
-    <Svg {name} width="75" height="75" fill="var(--colorBrand)" />
-  </div>
+<svelte:element this={href ? 'a' : 'div'} href={href ? href : null} title={href ? title : null} class="card" class:horizontal class:reverse>
+  {#if image}
+    <img src={image} alt="card-image" />
+  {/if}
+
   <div class="content">
-    <div class="title">{title}</div>
-    <div class="subtitle">
-      <span>{subtitle}</span>
-      <div class="arrow">
-        <Svg name="arrow" fill="var(--colorText2)" />
+    {#if icon}
+      <Svg name={icon} />
+    {/if}
+    {#if title}
+      <h3 class="title">{title}</h3>
+    {/if}
+
+    {#if description}
+      <div class="description">
+        {description}
       </div>
-    </div>
+    {/if}
+
+    <slot />
   </div>
-</div>
+</svelte:element>

@@ -83,6 +83,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    padding-bottom: 20px;
 
     input {
       font-size: 16px;
@@ -104,6 +105,18 @@
       outline: none;
       font-size: 16px;
       z-index: 1;
+    }
+
+    label {
+      color: var(--colorText);
+    }
+
+    input,
+    textarea {
+      border-radius: var(--radius);
+      border: 1px solid var(--colorBorder);
+      background-color: var(--colorBase);
+      padding: 10px;
     }
 
     .input {
@@ -145,7 +158,7 @@
       gap: 5px;
       color: $errorColor;
       font-size: 12px;
-      bottom: -25px;
+      bottom: -2px;
       opacity: 0.8;
 
       :global(svg) {
