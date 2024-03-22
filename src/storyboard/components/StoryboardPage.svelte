@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
+  import { animReveal } from '@/utils/reveal'
   import Themes from '@/storyboard/components/StoryboardThemes.svelte'
   import Dropdown from '@/storyboard/components/StoryboardDropdown.svelte'
   import Essentials from '@/storyboard/components/sections/StoryboardEssentials.svelte'
@@ -7,6 +9,10 @@
   import Heros from '@/storyboard/components/sections/StoryboardHeros.svelte'
   import Templates from '@/storyboard/components/sections/StoryboardTemplates.svelte'
   import Animations from '@/storyboard/components/sections/StoryboardAnimations.svelte'
+
+  onMount(() => {
+    animReveal()
+  })
 </script>
 
 <style lang="scss">
