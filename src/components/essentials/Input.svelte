@@ -109,6 +109,7 @@
 
     label {
       color: var(--colorText);
+      padding-bottom: 5px;
     }
 
     input,

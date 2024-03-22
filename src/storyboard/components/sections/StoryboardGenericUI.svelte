@@ -180,7 +180,11 @@
     </Component>
 
     <Component name="Gallery.svelte" importName="import Gallery from '@/components/generic-ui/Gallery.svelte'">Gallery</Component>
-    <Component name="ContactForm.svelte" importName="import ContactForm from '@/components/generic-ui/ContactForm.svelte'">
+    <Component
+      name="ContactForm.svelte"
+      importName="import ContactForm from '@/components/generic-ui/ContactForm.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
       <ContactForm />
     </Component>
   </div>

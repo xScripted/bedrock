@@ -16,7 +16,7 @@
     width: 25px;
     height: 25px;
     border-radius: 4px;
-    border: 1px solid lightgray;
+    border: 1px solid var(--colorBorder);
     flex-shrink: 0;
 
     &:checked {
