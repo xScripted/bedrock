@@ -3,16 +3,26 @@
 
 <style lang="scss">
   .hero {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
     text-align: center;
+    background-color: var(--colorBackground);
+
+    h2 {
+      color: var(--colorText2);
+      font-weight: 100;
+    }
     h1 {
-      font-size: 40px;
+      font-size: 50px;
       font-weight: bold;
-      max-width: 900px;
+      color: var(--colorText);
     }
   }
 </style>
 
 <div class="hero">
-  <h2>Este titulo es más pequeño</h2>
-  <h1>Descubre este producto innovador para Svelte</h1>
+  <h2 reveal>Únete a la Tokyo Manji</h2>
+  <h1 reveal>Una nueva era para <br /> los rufianes</h1>
 </div>

@@ -12,6 +12,7 @@
 <Dropdown title="🦸‍♀️ Heros">
   <div class="auto-columns">
     <Component
+      sample
       name="Hero.svelte"
       importName="import Hero from '@/components/heros/Hero.svelte'"
       attributes={{ done: true, hydrate: true, responsive: true }}

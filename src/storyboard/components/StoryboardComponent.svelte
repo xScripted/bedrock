@@ -10,6 +10,7 @@
 
   export let name: string = ''
   export let importName: string = ''
+  export let sample: boolean = false
   export let attributes: IAttributes = {}
   let expanded: boolean = false
 
@@ -32,11 +33,17 @@
     justify-content: space-between;
     box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
     background-color: var(--colorBase);
-    overflow: scroll;
+    overflow: auto;
 
     &:not(.expanded) {
       padding: 20px;
       border-radius: 10px;
+    }
+
+    &.sample {
+      :global(.header + div) {
+        max-height: 500px;
+      }
     }
 
     &.expanded {
@@ -85,7 +92,7 @@
   }
 </style>
 
-<div class="component c-{name.split('.svelte')[0]}" class:expanded>
+<div class="component c-{name.split('.svelte')[0]}" class:expanded class:sample>
   {#if !expanded}
     <div class="header">
       <div class="name">{name}</div>

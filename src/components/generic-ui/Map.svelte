@@ -26,7 +26,7 @@
     width: 100%;
     height: 100%;
     min-height: 500px;
-    border-radius: 20px;
+    border-radius: var(--radius);
     z-index: 1;
   }
 </style>
