@@ -5,14 +5,22 @@
     experimental?: boolean
     bugs?: boolean
     responsive?: boolean
+    expand?: boolean
   }
 
   export let name: string = ''
   export let importName: string = ''
   export let attributes: IAttributes = {}
+  let expanded: boolean = false
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(importName)
+  }
+
+  $: document.body.style.overflowY = expanded ? 'hidden' : 'auto'
+
+  const onKeyDown = (ev) => {
+    if (ev.keyCode === 27) expanded = false
   }
 </script>
 
@@ -23,9 +31,13 @@
     flex-direction: column;
     justify-content: space-between;
     box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    padding: 20px;
     background-color: var(--colorBase);
+    overflow: scroll;
+
+    &:not(.expanded) {
+      padding: 20px;
+      border-radius: 10px;
+    }
 
     &.expanded {
       position: fixed;
@@ -73,27 +85,33 @@
   }
 </style>
 
-<div class="component c-{name.split('.svelte')[0]}">
-  <div class="header">
-    <div class="name">{name}</div>
-    <button class="importName" on:click={copyToClipboard}>{importName}</button>
+<div class="component c-{name.split('.svelte')[0]}" class:expanded>
+  {#if !expanded}
+    <div class="header">
+      <div class="name">{name}</div>
+      <button class="importName" on:click={copyToClipboard}>{importName}</button>
 
-    <div class="attributes">
-      <div title={attributes.done ? 'Done!' : 'In progress'}>{attributes.done ? '✅' : '⚙️'}</div>
+      <div class="attributes">
+        <div title={attributes.done ? 'Done!' : 'In progress'}>{attributes.done ? '✅' : '⚙️'}</div>
 
-      {#if attributes.hydrate}
-        <div title="Needs to hydrate client:load">💧</div>
-      {/if}
+        {#if attributes.hydrate}
+          <div title="Needs to hydrate client:load">💧</div>
+        {/if}
 
-      {#if attributes.bugs}
-        <div title="Has bugs to repair">🪳</div>
-      {/if}
+        {#if attributes.bugs}
+          <div title="Has bugs to repair">🪳</div>
+        {/if}
 
-      {#if attributes.responsive}
-        <div title="Responsive tested & approved!">📱</div>
-      {/if}
+        {#if attributes.responsive}
+          <div title="Responsive tested & approved!">📱</div>
+        {/if}
+
+        <button title="Expand full window" on:click={() => (expanded = true)}>🖥️</button>
+      </div>
     </div>
-  </div>
+  {/if}
 
   <slot />
 </div>
+
+<svelte:window on:keydown|preventDefault={onKeyDown} />

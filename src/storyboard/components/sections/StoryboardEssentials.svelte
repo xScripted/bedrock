@@ -53,7 +53,7 @@
 </style>
 
 <Dropdown title="⭐ Essentials">
-  <h3 class="storyboard-title">Form Inputs</h3>
+  <h3>Form Inputs</h3>
 
   <div class="auto-columns">
     <Component
@@ -111,7 +111,7 @@
     <Component
       name="Select.svelte"
       importName="import Select from '@/components/essentials/Select.svelte'"
-      attributes={{ done: true, hydrate: true, responsive: true }}
+      attributes={{ done: false, hydrate: true, responsive: true }}
     >
       <Select icon="whatsapp" options={['Pikachu', 'Charmander', 'Squirtle']} />
       <Select
@@ -148,7 +148,7 @@
     </Component>
   </div>
 
-  <h3 class="storyboard-title">Others</h3>
+  <h3>Others</h3>
   <div class="auto-columns">
     <Component
       name="Button.svelte"
@@ -191,14 +191,14 @@
     </Component>
   </div>
 
-  <h3 class="storyboard-title">Menus</h3>
+  <h3>Menus</h3>
   <div class="auto-columns">
     <Component name="Menu.svelte" importName="import Menu from '@/components/essentials/menus/Menu.svelte'">
       <Menu />
     </Component>
   </div>
 
-  <h3 class="storyboard-title">Footers</h3>
+  <h3>Footers</h3>
   <div class="auto-columns">
     <Component name="Footer.svelte" importName="import Menu from '@/components/essentials/footers/Footer.svelte'">
       <Footer />

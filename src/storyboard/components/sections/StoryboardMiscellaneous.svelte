@@ -50,7 +50,7 @@
   <Component
     name="AccordionGallery.svelte"
     importName="import AccordionGallery from '@/components/miscellaneous/AccordionGallery.svelte'"
-    attributes={{ done: true, responsive: false }}
+    attributes={{ done: true, responsive: false, expand: true }}
   >
     <AccordionGallery items={accordionGalleryItems} />
   </Component>

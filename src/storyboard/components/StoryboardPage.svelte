@@ -4,6 +4,8 @@
   import Essentials from '@/storyboard/components/sections/StoryboardEssentials.svelte'
   import GenericUI from '@/storyboard/components/sections/StoryboardGenericUI.svelte'
   import Miscellaneous from '@/storyboard/components/sections/StoryboardMiscellaneous.svelte'
+  import Heros from '@/storyboard/components/sections/StoryboardHeros.svelte'
+  import Templates from '@/storyboard/components/sections/StoryboardTemplates.svelte'
   import Animations from '@/storyboard/components/sections/StoryboardAnimations.svelte'
 </script>
 
@@ -90,6 +92,10 @@
 
     <Animations />
 
+    <Heros />
+
+    <Templates />
+
     <Dropdown title="🌐 Interest pages"></Dropdown>
 
     <Dropdown title="📌 Tasks">
@@ -117,6 +123,11 @@
         <div class="task">
           <div class="component">DarkMode.svelte</div>
           <div class="issue">Cuando cargas la page en dark hay un blink blanco</div>
+        </div>
+
+        <div class="task">
+          <div class="component">DarkMode.svelte</div>
+          <div class="issue">Ponerlo en el Themes bar</div>
         </div>
       </div>
     </Dropdown>
