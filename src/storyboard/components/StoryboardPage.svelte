@@ -129,6 +129,11 @@
           <div class="component">DarkMode.svelte</div>
           <div class="issue">Ponerlo en el Themes bar</div>
         </div>
+
+        <div class="task">
+          <div class="component">AccodrionGallery.svelte</div>
+          <div class="issue">Bajar el brightness a las fotos que no estén selected</div>
+        </div>
       </div>
     </Dropdown>
   </div>
