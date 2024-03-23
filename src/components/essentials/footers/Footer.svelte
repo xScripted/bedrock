@@ -17,6 +17,21 @@
       url: 'url',
     },
   ]
+
+  const links = [
+    {
+      title: 'About me',
+      href: '',
+    },
+    {
+      title: 'Contact',
+      href: '',
+    },
+    {
+      title: 'FAQs',
+      href: '',
+    },
+  ]
 </script>
 
 <style lang="scss">
@@ -45,6 +60,33 @@
           height: 100%;
         }
       }
+
+      .links {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+
+        .link {
+          font-size: 15px;
+
+          &:hover {
+            color: var(--colorBrand);
+          }
+        }
+      }
+
+      .socials {
+        display: flex;
+        gap: 10px;
+
+        //same width as logo
+        width: 150px;
+
+        .social {
+          display: flex;
+          align-items: center;
+        }
+      }
     }
 
     .legal-section {
@@ -68,18 +110,33 @@
 </style>
 
 <div class="footer">
-  <div class="details">
+  <div class="details g-wrapper">
     <div class="logo">
       <img src={logo} alt="" />
     </div>
+
+    <div class="links">
+      {#each links as link}
+        <div class="link">
+          <a href={link.href}>{link.title}</a>
+        </div>
+      {/each}
+    </div>
+
     <div class="socials">
       {#each socials as social}
         <a href={social.url} class="social">
-          <Svg name={social.name} fill="var(--colorText2)" />
+          <Svg
+            name={social.name}
+            fill="var(--colorText2)"
+            height={social.name === 'twitter' ? '20' : '25'}
+            width={social.name === 'twitter' ? '20' : '25'}
+          />
         </a>
       {/each}
     </div>
   </div>
+
   <div class="legal-section">
     <div>© {new Date().getFullYear()} {company}</div>
     <a href="/politica-de-privacidad/" title="Política de Privacidad"> Política de Privacidad </a>
