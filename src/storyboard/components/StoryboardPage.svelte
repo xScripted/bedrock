@@ -134,6 +134,16 @@
           <div class="component">AccodrionGallery.svelte</div>
           <div class="issue">Bajar el brightness a las fotos que no estén selected</div>
         </div>
+
+        <div class="task">
+          <div class="component">Hero.svelte</div>
+          <div class="issue">Mejorar hero</div>
+        </div>
+
+        <div class="task">
+          <div class="component">Footer.svelte</div>
+          <div class="issue">Hacer el footer</div>
+        </div>
       </div>
     </Dropdown>
   </div>
