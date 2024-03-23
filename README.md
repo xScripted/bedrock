@@ -2,18 +2,6 @@
 
 Todo lo necesario para llevar a cabo un proyecto web de forma modular
 
-## ⭐ Fase 1 - Base
-
-- Estructura de carpetas src
-- Configuración prettier (.vscode) y oxlint
-- Componentes essentials
-- Archivos globales Sass
-- Tsconfig.json & Alias
-- Astro config integrations:
-  - Svelte
-  - Sitemap
-  - Robots
-
 ### ⚙️ Tareas:
 
 1.  Actualizar: site: "https://www.example.com" (astro.config.mjs),
@@ -23,6 +11,24 @@ Todo lo necesario para llevar a cabo un proyecto web de forma modular
 5.  Layout.astro: Cambiar las fuentes (default: Poppins) & defaults.scss cambiar la font-family
 6.  Añadir logo a public/assets/favicon.svg
 7.  Elegir theme, copiar el scss de storyboard/components/themes a /sass e importarlo en global.scss
+
+### 🧩 Plugins
+
+#### 🗂️ Astro DB
+
+In progress...
+
+#### 🪪 Auth
+
+In progress...
+
+#### 📖 Blog
+
+In progress...
+
+#### 💲E-Commerce
+
+In progress...
 
 ## 🖇️ Bibliografía:
 

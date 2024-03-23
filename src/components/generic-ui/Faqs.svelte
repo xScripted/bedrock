@@ -6,7 +6,7 @@
 
   let isClosed: boolean = false
 
-  let xs: IQuestions[] = [
+  let faqs: IQuestions[] = [
     {
       question: 'pregunta1',
       answer: 'respuesta1',
@@ -50,7 +50,7 @@
 </style>
 
 <div class="faqs">
-  {#each xs as x}
+  {#each faqs as x}
     <div class="pack">
       <button
         class="question"

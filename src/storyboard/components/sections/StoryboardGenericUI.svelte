@@ -5,6 +5,7 @@
 
   /*🧩 Generic UI*/
   import Card from '@/components/generic-ui/cards/Card.svelte'
+  import CardMinimalist from '@/components/generic-ui/cards/CardMinimalist.svelte'
   import Modal from '@/components/generic-ui/Modal.svelte'
   import Map from '@/components/generic-ui/Map.svelte'
   import Opinions from '@/components/generic-ui/Opinions.svelte'
@@ -132,6 +133,32 @@
           icon="twitter"
           title="Noteworthy technology acquisitions 2021"
           description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+      </div>
+    </Component>
+
+    <Component
+      name="CardMinimalist.svelte"
+      importName="import Modal from '@/components/generic-ui/CardMinimalist.svelte'"
+      attributes={{ done: false, responsive: true }}
+    >
+      <div class="slot-cards">
+        <CardMinimalist
+          image="https://static.wikia.nocookie.net/valorant/images/5/5c/Loading_Screen_Sunset.png"
+          title="Sunset"
+          subtitle="The new valorant map unveiled at valorant champions"
+        />
+
+        <CardMinimalist
+          href="/"
+          image="https://static.wikia.nocookie.net/valorant/images/5/5c/Loading_Screen_Sunset.png"
+          title="Sunset"
+          subtitle="The new valorant map unveiled at valorant champions"
+        />
+        <CardMinimalist
+          image="https://static.wikia.nocookie.net/valorant/images/5/5c/Loading_Screen_Sunset.png"
+          title="Sunset"
+          subtitle="The new valorant map unveiled at valorant champions"
         />
       </div>
     </Component>

@@ -66,7 +66,7 @@
 
 <svelte:element this={href ? 'a' : 'div'} href={href ? href : null} title={href ? title : null} class="card" class:horizontal class:reverse>
   {#if image}
-    <img src={image} alt="card-image" />
+    <img src={image} alt="card-image" loading="lazy" />
   {/if}
 
   <div class="content">
