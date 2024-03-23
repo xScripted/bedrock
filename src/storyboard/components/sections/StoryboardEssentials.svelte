@@ -8,7 +8,7 @@
   import Button from '@/components/essentials/Button.svelte'
   import Range from '@/components/essentials/Range.svelte'
   import Select from '@/components/essentials/Select.svelte'
-  import BasicMenu from '@/components/essentials/menus/BasicMenu.svelte'
+  import MenuBasic from '@/components/essentials/menus/MenuBasic.svelte'
   import Footer from '@/components/essentials/footers/Footer.svelte'
   import DarkMode from '@/components/essentials/DarkMode.svelte'
   import Svg from '@/components/essentials/Svg.svelte'
@@ -194,7 +194,7 @@
   <h3>Menus</h3>
   <div class="auto-columns">
     <Component name="Menu.svelte" importName="import Menu from '@/components/essentials/menus/Menu.svelte'">
-      <BasicMenu />
+      <MenuBasic />
     </Component>
   </div>
 

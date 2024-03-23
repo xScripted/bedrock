@@ -6,7 +6,6 @@
   export let width: string = '25'
   export let height: string = '25'
   export let className: string = ''
-  let x = 3
 
   className = className ? `class="${className}"` : ''
 
