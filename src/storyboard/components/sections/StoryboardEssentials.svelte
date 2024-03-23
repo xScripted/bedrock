@@ -200,8 +200,12 @@
 
   <h3>Footers</h3>
   <div class="auto-columns">
-    <Component name="Footer.svelte" importName="import Menu from '@/components/essentials/footers/Footer.svelte'">
-      <Footer />
+    <Component
+      name="Footer.svelte"
+      importName="import Menu from '@/components/essentials/footers/Footer.svelte'"
+      attributes={{ done: false, responsive: true }}
+    >
+      <Footer logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" />
     </Component>
   </div>
 </Dropdown>

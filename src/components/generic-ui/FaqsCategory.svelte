@@ -25,6 +25,7 @@
 
 <style lang="scss">
   @import '../../sass/mixins.scss';
+
   .faqs-category {
     display: flex;
     width: 100%;
