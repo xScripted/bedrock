@@ -1,4 +1,10 @@
 <script lang="ts">
+  import { animReveal } from '@/utils/reveal'
+  import { onMount } from 'svelte'
+
+  onMount(() => {
+    animReveal()
+  })
 </script>
 
 <style lang="scss">
@@ -23,6 +29,6 @@
 </style>
 
 <div class="hero">
-  <h2 reveal>Únete a la Tokyo Manji</h2>
-  <h1 reveal>Una nueva era para <br /> los rufianes</h1>
+  <h2 reveal="1">Únete a la Tokyo Manji</h2>
+  <h1 reveal="2">Una nueva era para <br /> los rufianes</h1>
 </div>

@@ -2,8 +2,8 @@ export const animReveal = () => {
   let callback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1'
-        entry.target.style.transform = 'translateY(0px)'
+        entry.target.removeAttribute('reveal')
+        entry.target.setAttribute('revealed', '')
       }
     })
   }
@@ -18,13 +18,10 @@ export const animReveal = () => {
   const observer = new IntersectionObserver(callback, options)
 
   const reveals = document.querySelectorAll('[reveal]')
+
   reveals.forEach((element: HTMLElement) => {
-    const delay = element.getAttribute('reveal') || '0'
-
-    element.style.opacity = '1'
-    element.style.transform = 'translateY(25px)'
+    const delay = Number(element.getAttribute('reveal') || '0')
     element.style.transition = `transform 1s ease ${delay}s, opacity 1s ease ${delay}s`
-
     observer.observe(element)
   })
 }
