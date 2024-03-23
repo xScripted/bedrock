@@ -13,6 +13,7 @@
   import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'
   import Gallery from '@/components/generic-ui/Gallery.svelte'
   import ContactForm from '@/components/generic-ui/ContactForm.svelte'
+  import Slider from '@/components/generic-ui/Slider.svelte'
 
   let modal: boolean = false
 
@@ -161,6 +162,31 @@
 
     <Component name="Opinions.svelte" importName="import Opinions from '@/components/generic-ui/Opinions.svelte'">Opinions</Component>
 
+    <Component name="Slider.svelte" importName="import Slider from '@/components/generic-ui/Slider.svelte'">
+      <Slider>
+        <Card
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+        <Card
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+        <Card
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+        <Card
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+        <Card
+          title="Noteworthy technology acquisitions 2021"
+          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+        />
+      </Slider>
+    </Component>
+
     <Component
       name="Pagination.svelte"
       importName="import Pagination from '@/components/generic-ui/Pagination.svelte'"
@@ -169,7 +195,14 @@
       <Pagination currentPage={2} totalPages={20} />
     </Component>
 
-    <Component name="Faqs.svelte" importName="import Faqs from '@/components/generic-ui/Faqs.svelte'">Faqs</Component>
+    <Component name="Faqs.svelte" importName="import Faqs from '@/components/generic-ui/Faqs.svelte'">
+      <Faqs>
+        <!--<div class="Q1">
+          <span>Pregunta</span>
+          <span>Respuesta</span>
+        </div>-->
+      </Faqs>
+    </Component>
 
     <Component
       name="FaqsCategory.svelte"

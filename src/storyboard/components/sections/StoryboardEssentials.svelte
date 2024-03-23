@@ -203,7 +203,7 @@
     <Component
       name="Footer.svelte"
       importName="import Menu from '@/components/essentials/footers/Footer.svelte'"
-      attributes={{ done: false, responsive: true }}
+      attributes={{ done: true, responsive: true }}
     >
       <Footer
         company="ValoMaster"
