@@ -16,7 +16,10 @@ Todo lo necesario para llevar a cabo un proyecto web de forma modular
 
 #### 🗂️ Astro DB
 
-In progress...
+https://docs.astro.build/en/guides/astro-db/
+
+Installation
+`git merge plugin-astro-db && npm i`
 
 #### 🪪 Auth
 
