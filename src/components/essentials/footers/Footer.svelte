@@ -43,7 +43,7 @@
     align-items: center;
     gap: 20px;
 
-    background-color: var(--colorBackground);
+    background-color: var(--colorBase);
 
     .details {
       width: 75%;

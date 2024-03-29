@@ -59,6 +59,7 @@
     background-color: var(--colorBackground);
     border-bottom: 1px solid var(--colorBorder);
     height: $menuHeight;
+    z-index: 7;
 
     .g-wrapper {
       display: flex;
@@ -122,7 +123,7 @@
           width: 100%;
           padding: 20px;
           height: calc(100dvh - $menuHeight);
-          top: $menuHeight;
+          top: 0px;
           left: 0;
           background-color: var(--colorBase);
 
