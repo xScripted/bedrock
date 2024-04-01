@@ -2,53 +2,86 @@
   import { onMount } from 'svelte'
   export let showedItems: number = 2
 
-  let HTMLSliderContainer: HTMLElement
-  let sliderWidth: number
+  let HTMLSlider: HTMLElement
+  let sliderContainerWidth: number
   let nItems: number = 0
+  let currentDot: number = 0
+
+  const sliding = (index) => {
+    HTMLSlider.style.transform = `translateX(-${sliderContainerWidth * index}px)`
+
+    currentDot = index
+  }
 
   onMount(() => {
-    nItems = HTMLSliderContainer.children.length
-    HTMLSliderContainer.style.width = (sliderWidth * nItems) / showedItems + 'px'
+    nItems = HTMLSlider.children.length
+    HTMLSlider.style.width = (sliderContainerWidth * nItems) / showedItems + 'px'
   })
 </script>
 
 <style lang="scss">
-  .slider {
-    border: 2px solid red;
-    overflow: hidden;
-    padding: 0;
+  @import '../../sass/mixins.scss';
 
-    :global(.slider-container > *) {
-      width: 100%;
-    }
+  .g-wrapper {
+    //border: 1px solid red;
+
+    width: fit-content;
+    height: fit-content;
+    width: 100%;
 
     .slider-container {
-      display: flex;
-      width: 5850px;
-    }
+      overflow: hidden;
+      padding: 0;
+      scroll-snap-type: both mandatory;
 
+      @include notDesktop {
+        overflow: scroll;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      .slider {
+        transition: 0.8s ease;
+        display: flex;
+        width: 100%;
+      }
+    }
     .dots {
       display: flex;
+      justify-content: center;
+      padding: 20px;
       gap: 10px;
 
       .dot {
-        width: 20px;
-        height: 20px;
-        border-radius: 100%;
-        background-color: red;
+        width: 10px;
+        height: 10px;
+        border-radius: 15px;
+        background-color: var(--colorBorder);
+        transition: 0.3s;
+
+        cursor: pointer;
+
+        &.active {
+          background-color: var(--colorBrand);
+          width: 30px;
+        }
       }
     }
   }
 </style>
 
-<div class="slider g-wrapper" bind:offsetWidth={sliderWidth}>
-  <div class="slider-container" bind:this={HTMLSliderContainer}>
-    <slot />
+<div class="g-wrapper">
+  <div class="slider-container" bind:offsetWidth={sliderContainerWidth}>
+    <div class="slider" bind:this={HTMLSlider}>
+      <slot />
+    </div>
   </div>
 
   <div class="dots">
-    {#each new Array(Math.round(nItems / showedItems)) as _}
-      <div class="dot"></div>
+    {#each new Array(Math.ceil(nItems / showedItems)) as _, index}
+      <button class="dot" class:active={currentDot === index} on:click={() => sliding(index)} />
     {/each}
   </div>
 </div>

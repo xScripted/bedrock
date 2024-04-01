@@ -19,6 +19,7 @@
     flex-direction: column;
     overflow: hidden;
     border-radius: var(--radius);
+    width: 100%;
 
     &.reverse {
       flex-direction: column-reverse;
