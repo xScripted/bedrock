@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Themes from '@/storyboard/components/StoryboardThemes.svelte'
   import Dropdown from '@/storyboard/components/StoryboardDropdown.svelte'
   import Essentials from '@/storyboard/components/sections/StoryboardEssentials.svelte'
   import GenericUI from '@/storyboard/components/sections/StoryboardGenericUI.svelte'
@@ -79,8 +78,6 @@
 </style>
 
 <div class="storyboard">
-  <Themes />
-
   <div class="container">
     <h1 class="g-title center">STORYBOARD</h1>
 
@@ -123,11 +120,6 @@
         <div class="task">
           <div class="component">DarkMode.svelte</div>
           <div class="issue">Cuando cargas la page en dark hay un blink blanco</div>
-        </div>
-
-        <div class="task">
-          <div class="component">DarkMode.svelte</div>
-          <div class="issue">Ponerlo en el Themes bar</div>
         </div>
 
         <div class="task">
