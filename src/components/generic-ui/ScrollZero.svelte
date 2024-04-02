@@ -18,11 +18,11 @@
     z-index: 10;
   }
 
-  :global(svg) {
+  :global(.scroll-zero-arrow) {
     transform: rotateZ(-180deg) translateY(-2px);
   }
 </style>
 
 <Button customClass="scroll-zero" click={scrollTop}>
-  <Svg name="arrow" />
+  <Svg name="arrow" className="scroll-zero-arrow" />
 </Button>

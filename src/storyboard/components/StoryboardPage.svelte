@@ -10,6 +10,7 @@
 </script>
 
 <style lang="scss">
+  @import '../../sass/mixins.scss';
   .storyboard {
     display: flex;
 
@@ -26,18 +27,22 @@
     }
 
     .container {
-      padding: 10px 50px;
+      padding: 10px;
       width: 100%;
 
       :global(.auto-columns) {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 20px;
         padding: 20px 0;
       }
 
       :global(.auto-columns.wide) {
         grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+
+        @include notDesktop {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
       }
 
       :global(.notes) {
