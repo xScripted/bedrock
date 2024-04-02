@@ -7,6 +7,7 @@
   import Heros from '@/storyboard/components/sections/StoryboardHeros.svelte'
   import Templates from '@/storyboard/components/sections/StoryboardTemplates.svelte'
   import Animations from '@/storyboard/components/sections/StoryboardAnimations.svelte'
+  import ScrollZero from '@/components/generic-ui/ScrollZero.svelte'
 </script>
 
 <style lang="scss">
@@ -147,4 +148,6 @@
       </div>
     </Dropdown>
   </div>
+
+  <ScrollZero />
 </div>
