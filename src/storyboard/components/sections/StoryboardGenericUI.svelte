@@ -70,6 +70,7 @@
 
   .padding {
     padding: 20px;
+    width: 100%;
   }
 
   .slot-cards-hor {

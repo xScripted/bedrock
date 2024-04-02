@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   export let showedItems: number = 1
+  export let autoSlide: boolean = true
 
   let HTMLSlider: HTMLElement
   let sliderContainerWidth: number
@@ -13,9 +14,27 @@
     currentDot = index
   }
 
+  const slidingScroll = (ev) => (currentDot = ev.target.scrollLeft / sliderContainerWidth)
+  const calcWidth = (): string => (sliderContainerWidth * nItems) / showedItems + 'px'
+
+  let intervalId
+
+  const interval = () => {
+    if (autoSlide) {
+      return setInterval(() => {
+        const nextIndex = currentDot < Math.floor(nItems / showedItems) - 1 ? currentDot + 1 : 0
+        sliding(nextIndex)
+      }, 5000)
+    }
+  }
+
   onMount(() => {
     nItems = HTMLSlider.children.length
-    HTMLSlider.style.width = (sliderContainerWidth * nItems) / showedItems + 'px'
+    HTMLSlider.style.width = calcWidth()
+
+    window.addEventListener('resize', () => (HTMLSlider.style.width = calcWidth()))
+
+    intervalId = interval()
   })
 </script>
 
@@ -23,7 +42,6 @@
   @import '../../sass/mixins.scss';
 
   .g-wrapper {
-    border: 1px solid red;
     width: 100%;
     padding: 0;
 
@@ -47,7 +65,7 @@
       }
 
       :global(.slider > *) {
-        scroll-snap-align: center;
+        scroll-snap-align: start;
       }
     }
     .dots {
@@ -75,7 +93,7 @@
 </style>
 
 <div class="g-wrapper">
-  <div class="slider-container" bind:offsetWidth={sliderContainerWidth}>
+  <div class="slider-container" bind:offsetWidth={sliderContainerWidth} on:scroll={slidingScroll}>
     <div class="slider" bind:this={HTMLSlider}>
       <slot />
     </div>
@@ -83,7 +101,15 @@
 
   <div class="dots">
     {#each new Array(Math.ceil(nItems / showedItems)) as _, index}
-      <button class="dot" class:active={currentDot === index} on:click={() => sliding(index)} />
+      <button
+        class="dot"
+        class:active={currentDot === index}
+        on:click={() => {
+          sliding(index)
+          clearInterval(intervalId)
+          intervalId = interval()
+        }}
+      />
     {/each}
   </div>
 </div>
