@@ -122,7 +122,7 @@
         {#if attributes.responsive}
           <div title="Responsive tested & approved!">📱</div>
         {/if}
-
+        {expanded}
         <button title="Expand full window" on:click={() => (expanded = true)}>🖥️</button>
       </div>
     </div>

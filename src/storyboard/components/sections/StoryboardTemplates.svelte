@@ -3,6 +3,7 @@
   import Component from '@/storyboard/components/StoryboardComponent.svelte'
 
   /*🃏 Templates*/
+  import Lightweight from '@/components/templates/Lightweight.svelte'
 </script>
 
 <style lang="scss">
@@ -10,6 +11,8 @@
 
 <Dropdown title="🃏 Templates">
   <div class="auto-columns">
-    <Component name="BONITA PAGE NO?" attributes={{ done: true, hydrate: true, responsive: true }}>Garen</Component>
+    <Component name="Lightweight.svelte" attributes={{ done: true, hydrate: true, responsive: true }}>
+      <Lightweight />
+    </Component>
   </div>
 </Dropdown>
