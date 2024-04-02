@@ -68,6 +68,10 @@
     grid-row: span 2;
   }
 
+  .padding {
+    padding: 20px;
+  }
+
   .slot-cards-hor {
     display: flex;
     flex-direction: column;
@@ -214,26 +218,14 @@
 
     <Component name="Slider.svelte" importName="import Slider from '@/components/generic-ui/Slider.svelte'">
       <Slider>
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
+        {#each new Array(5) as _}
+          <div class="padding">
+            <Card
+              title="Noteworthy technology acquisitions 2021"
+              description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+            />
+          </div>
+        {/each}
       </Slider>
     </Component>
 

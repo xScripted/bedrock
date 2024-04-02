@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  export let showedItems: number = 2
+  export let showedItems: number = 1
 
   let HTMLSlider: HTMLElement
   let sliderContainerWidth: number
@@ -23,16 +23,14 @@
   @import '../../sass/mixins.scss';
 
   .g-wrapper {
-    //border: 1px solid red;
-
-    width: fit-content;
-    height: fit-content;
+    border: 1px solid red;
     width: 100%;
+    padding: 0;
 
     .slider-container {
       overflow: hidden;
       padding: 0;
-      scroll-snap-type: both mandatory;
+      scroll-snap-type: x mandatory;
 
       @include notDesktop {
         overflow: scroll;
@@ -46,6 +44,10 @@
         transition: 0.8s ease;
         display: flex;
         width: 100%;
+      }
+
+      :global(.slider > *) {
+        scroll-snap-align: center;
       }
     }
     .dots {
