@@ -79,13 +79,25 @@
         height: 10px;
         border-radius: 15px;
         background-color: var(--colorBorder);
+        overflow: hidden;
         transition: 0.3s;
 
         cursor: pointer;
+        filter: brightness(0.9);
+
+        .base {
+          height: 100%;
+          width: 0%;
+          background-color: var(--colorBrand);
+        }
 
         &.active {
-          background-color: var(--colorBrand);
           width: 30px;
+
+          .base {
+            width: 100%;
+            transition: 5s linear;
+          }
         }
       }
     }
@@ -109,7 +121,9 @@
           clearInterval(intervalId)
           intervalId = interval()
         }}
-      />
+      >
+        <div class="base" />
+      </button>
     {/each}
   </div>
 </div>
