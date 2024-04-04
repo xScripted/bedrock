@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { BREAKPOINT } from '@/constants/globalVariables'
   import { onMount } from 'svelte'
   export let showedItems: number = 1
   export let autoSlide: boolean = true
@@ -29,6 +30,7 @@
   }
 
   onMount(() => {
+    autoSlide = BREAKPOINT < window.innerWidth && autoSlide
     nItems = HTMLSlider.children.length
     HTMLSlider.style.width = calcWidth()
 
@@ -94,9 +96,14 @@
         &.active {
           width: 30px;
 
+          &.autoSlide {
+            .base {
+              transition: 5s linear;
+            }
+          }
+
           .base {
             width: 100%;
-            transition: 5s linear;
           }
         }
       }
@@ -116,6 +123,7 @@
       <button
         class="dot"
         class:active={currentDot === index}
+        class:autoSlide
         on:click={() => {
           sliding(index)
           clearInterval(intervalId)
