@@ -91,6 +91,7 @@
           height: 100%;
           width: 0%;
           background-color: var(--colorBrand);
+          border-radius: 15px;
         }
 
         &.active {
