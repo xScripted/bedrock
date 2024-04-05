@@ -4,5 +4,6 @@ declare namespace svelteHTML {
   interface HTMLAttributes<T> {
     theme?: string
     reveal?: string
+    onsubmit?: string
   }
 }

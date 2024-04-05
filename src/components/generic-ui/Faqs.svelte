@@ -50,16 +50,16 @@
 </style>
 
 <div class="faqs">
-  {#each faqs as x}
+  {#each faqs as faq}
     <div class="pack">
       <button
         class="question"
         on:click={() => {
           isClosed = !isClosed
-        }}>{x.question}</button
+        }}>{faq.question}</button
       >
       {#if isClosed}
-        <span class="answer">{x.answer}</span>
+        <span class="answer">{faq.answer}</span>
       {/if}
     </div>
   {/each}
