@@ -165,12 +165,7 @@
     </Component>
 
     <Component name="Faqs.svelte" importName="import Faqs from '@/components/generic-ui/Faqs.svelte'">
-      <Faqs>
-        <!--<div class="Q1">
-          <span>Pregunta</span>
-          <span>Respuesta</span>
-        </div>-->
-      </Faqs>
+      <Faqs />
     </Component>
 
     <Component
