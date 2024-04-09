@@ -21,7 +21,12 @@ Installation git merge plugin-astro-db && npm i
 
 #### 🪪 Auth
 
-In progress...
+Installation git merge plugin-auth && npm i
+
+Example to filter access:
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect("/login");
 
 #### 📖 Blog
 
