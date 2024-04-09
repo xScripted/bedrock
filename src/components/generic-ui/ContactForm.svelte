@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Api from '@/api'
   import Input from '@/components/essentials/Input.svelte'
   import Checkbox from '@/components/essentials/Checkbox.svelte'
   import Svg from '@/components/essentials/Svg.svelte'
@@ -55,12 +54,18 @@
 
     if (!errors.includes(true)) {
       loading = true
-      const result = await Api.post('/lead', {
-        name: data.name.value,
-        email: data.email.value,
-        phone: data.phone.value,
-        message: data.message.value,
-        context,
+      const result = await fetch('/api/lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name.value,
+          email: data.email.value,
+          phone: data.phone.value,
+          message: data.message.value,
+          context,
+        }),
       })
 
       data.name.value = ''
