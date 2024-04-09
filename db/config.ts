@@ -16,7 +16,7 @@ const User = defineTable({
     email: column.text({ unique: true, required: true }),
     phone: column.text({ required: true }),
     password: column.text(),
-    role: column.text(),
+    role: column.text({ optional: true }),
   },
 })
 

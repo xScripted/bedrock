@@ -4,23 +4,22 @@ import { db, eq, User } from 'astro:db'
 import { Argon2id } from 'oslo/password'
 export async function POST(context: APIContext): Promise<Response> {
   //read the form data
-  const formData = await context.request.formData()
-  const username = formData.get('username')
-  const password = formData.get('password')
+  const data = await context.request.json()
+
   //validate the data
-  if (typeof username !== 'string') {
+  if (typeof data.username !== 'string') {
     return new Response('Invalid username', {
       status: 400,
     })
   }
-  if (typeof password !== 'string') {
+  if (typeof data.password !== 'string') {
     return new Response('Invalid password', {
       status: 400,
     })
   }
 
   //search the user
-  const foundUser = (await db.select().from(User).where(eq(User.username, username))).at(0)
+  const foundUser = (await db.select().from(User).where(eq(User.username, data.username))).at(0)
 
   //if user not found
   if (!foundUser) {
@@ -34,7 +33,7 @@ export async function POST(context: APIContext): Promise<Response> {
     })
   }
 
-  const validPassword = await new Argon2id().verify(foundUser.password, password)
+  const validPassword = await new Argon2id().verify(foundUser.password, data.password)
 
   //If password is not valid
   if (!validPassword) {
