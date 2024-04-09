@@ -14,16 +14,21 @@
     { item: 'About us', icon: 'instagram', href: '' },
     { item: 'Privacy', icon: 'instagram', href: '' },
     { item: 'Imagination', icon: 'instagram', href: '' },
+    { item: 'Imagination', icon: 'instagram', href: '' },
   ]
 </script>
 
 <style lang="scss">
+  @import '../../../sass/mixins.scss';
+
   .menu {
     height: 100dvh;
     width: fit-content;
     min-width: 175px;
     background-color: var(--colorBase);
     padding: 20px;
+    position: absolute;
+    left: 0;
 
     display: flex;
     flex-direction: column;
@@ -42,8 +47,8 @@
         overflow: hidden;
 
         box-shadow:
-          5px 5px 10px var(--colorBackground),
-          -5px -5px 10px var(--colorBase2);
+          3px 3px 10px var(--colorBackground),
+          -3px -3px 10px var(--colorBase2);
 
         img {
           height: 100%;
@@ -88,6 +93,60 @@
         }
       }
     }
+
+    @include notDesktop {
+      width: 100%;
+      height: 80px;
+      bottom: 0;
+      padding: 0 20px;
+
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+
+      .details {
+        width: fit-content;
+
+        .logo {
+          height: 50px;
+          width: 50px;
+        }
+        .d-container {
+          display: none;
+        }
+      }
+
+      .menuItems {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        .menuItem {
+          height: 40px;
+          width: 40px;
+          padding: 5px;
+          box-shadow:
+            3px 3px 10px var(--colorBackground),
+            -3px -3px 10px var(--colorBase2);
+
+          .item {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .dropright {
+    .triangle {
+      height: 20px;
+      width: 20px;
+      background-color: aqua;
+      border-radius: 2px;
+      position: absolute;
+      transform: rotate(45deg);
+    }
   }
 </style>
 
@@ -103,8 +162,8 @@
   <div class="menuItems">
     {#each menuItems as menuItem}
       <a class="menuItem" href={menuItem.href}>
-        <Svg name={menuItem.icon} />
-        <span>{menuItem.item}</span>
+        <Svg name={menuItem.icon} height="30" width="30" />
+        <span class="item">{menuItem.item}</span>
       </a>
     {/each}
   </div>
