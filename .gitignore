@@ -8,6 +8,7 @@ dist/
 node_modules/
 package-lock.json
 pageUrls.ts
+src/constants/pageUrls.ts
 
 # logs
 npm-debug.log*
@@ -19,6 +20,7 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+env.d.ts
 
 # macOS-specific files
 .DS_Store

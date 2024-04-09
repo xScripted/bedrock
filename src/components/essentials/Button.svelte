@@ -2,6 +2,7 @@
   export let disabled: boolean = false
   export let type: 'main' | 'secondary' | 'subButton' = 'main'
   export let width: string = ''
+  export let customClass: string = ''
   export let click = () => {}
 </script>
 
@@ -73,6 +74,6 @@
   }
 </style>
 
-<button class="btn-{type}" style={width ? `width: ${width}` : ''} on:click={click} {disabled}>
+<button class="btn-{type} {customClass}" style={width ? `width: ${width}` : ''} on:click={click} {disabled}>
   <slot />
 </button>

@@ -1,25 +1,50 @@
 <script lang="ts">
-  interface IQuestions {
+  import { onMount } from 'svelte'
+
+  //falta lo de los slots
+
+  interface IQuestion {
     question: string
     answer: string
   }
 
-  let isClosed: boolean = false
-
-  let faqs: IQuestions[] = [
+  let faqs: IQuestion[] = [
     {
       question: 'pregunta1',
-      answer: 'respuesta1',
+
+      answer:
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta vero rerum quidem, laudantium explicabo corporis similique voluptatem quod amet cupiditate. Quis autem accusamus aut ab velit. Porro dolorem atque voluptatum.',
     },
     {
       question: 'pregunta2',
-      answer: 'respuesta2',
+      answer: 'respuestarespuesta1respuesta1respuesta1respuesta12',
     },
     {
       question: 'pregunta3',
       answer: 'respuesta3',
     },
   ]
+
+  let HTMLFaqs: HTMLElement
+  let answers: NodeList
+
+  const handleClick = (event: any) => {
+    let selectedAnswer: HTMLElement = event.target.nextElementSibling
+
+    if (selectedAnswer.style.height != '0px') return (selectedAnswer.style.height = '0px')
+
+    answers.forEach((answer: HTMLElement) => (answer.style.height = '0px'))
+
+    selectedAnswer.style.height = selectedAnswer.getAttribute('meta-height') + 'px'
+  }
+
+  onMount(() => {
+    answers = HTMLFaqs.querySelectorAll('.answer')
+    answers.forEach((answer: HTMLElement) => {
+      answer.setAttribute('meta-height', answer.offsetHeight.toString())
+      answer.style.height = '0px'
+    })
+  })
 </script>
 
 <style lang="scss">
@@ -38,29 +63,39 @@
       padding: 15px;
 
       .question {
+        transition: 0.3s ease;
         font-weight: bold;
+        text-align: left;
         cursor: pointer;
 
         &:hover {
+          transition: 0.3s ease;
           color: var(--colorBrand);
         }
+      }
+
+      .answer {
+        margin-top: 10px;
+        font-weight: lighter;
+        font-size: 15px;
+
+        overflow: hidden;
+        height: 100%;
+        text-align: justify;
+
+        transition: 0.3s ease;
       }
     }
   }
 </style>
 
-<div class="faqs">
-  {#each faqs as x}
+<div class="faqs" bind:this={HTMLFaqs}>
+  {#each faqs as faq}
     <div class="pack">
-      <button
-        class="question"
-        on:click={() => {
-          isClosed = !isClosed
-        }}>{x.question}</button
-      >
-      {#if isClosed}
-        <span class="answer">{x.answer}</span>
-      {/if}
+      <button class="question" on:click={handleClick}>
+        {faq.question}
+      </button>
+      <span class="answer">{faq.answer}</span>
     </div>
   {/each}
 </div>

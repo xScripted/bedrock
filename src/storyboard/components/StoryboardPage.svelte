@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Themes from '@/storyboard/components/StoryboardThemes.svelte'
   import Dropdown from '@/storyboard/components/StoryboardDropdown.svelte'
   import Essentials from '@/storyboard/components/sections/StoryboardEssentials.svelte'
   import GenericUI from '@/storyboard/components/sections/StoryboardGenericUI.svelte'
@@ -7,9 +6,11 @@
   import Heros from '@/storyboard/components/sections/StoryboardHeros.svelte'
   import Templates from '@/storyboard/components/sections/StoryboardTemplates.svelte'
   import Animations from '@/storyboard/components/sections/StoryboardAnimations.svelte'
+  import ScrollZero from '@/components/generic-ui/ScrollZero.svelte'
 </script>
 
 <style lang="scss">
+  @import '../../sass/mixins.scss';
   .storyboard {
     display: flex;
 
@@ -26,18 +27,22 @@
     }
 
     .container {
-      padding: 10px 50px;
+      padding: 10px;
       width: 100%;
 
       :global(.auto-columns) {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 20px;
         padding: 20px 0;
       }
 
       :global(.auto-columns.wide) {
         grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+
+        @include notDesktop {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
       }
 
       :global(.notes) {
@@ -79,8 +84,6 @@
 </style>
 
 <div class="storyboard">
-  <Themes />
-
   <div class="container">
     <h1 class="g-title center">STORYBOARD</h1>
 
@@ -126,11 +129,6 @@
         </div>
 
         <div class="task">
-          <div class="component">DarkMode.svelte</div>
-          <div class="issue">Ponerlo en el Themes bar</div>
-        </div>
-
-        <div class="task">
           <div class="component">AccodrionGallery.svelte</div>
           <div class="issue">Bajar el brightness a las fotos que no estén selected</div>
         </div>
@@ -147,4 +145,6 @@
       </div>
     </Dropdown>
   </div>
+
+  <ScrollZero />
 </div>

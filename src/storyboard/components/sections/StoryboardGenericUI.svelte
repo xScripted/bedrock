@@ -64,6 +64,15 @@
     }
   }
 
+  .row-span {
+    grid-row: span 2;
+  }
+
+  .padding {
+    padding: 20px;
+    width: 100%;
+  }
+
   .slot-cards-hor {
     display: flex;
     flex-direction: column;
@@ -73,68 +82,90 @@
 
 <Dropdown title="🧩 Generic UI">
   <div class="auto-columns wide">
-    <Component name="Card.svelte" importName="import Card from '@/components/generic-ui/cards/Card.svelte'">
-      <div class="slot-cards">
-        <Card title="Noteworthy technology acquisitions 2021" />
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
+    <div class="row-span">
+      <Component name="Card.svelte" importName="import Card from '@/components/generic-ui/cards/Card.svelte'">
+        <div class="slot-cards">
+          <Card title="Noteworthy technology acquisitions 2021" />
+          <Card
+            title="Noteworthy technology acquisitions 2021"
+            description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+          />
 
-        <Card
-          href="/"
-          icon="twitter"
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
+          <Card
+            href="/"
+            icon="twitter"
+            title="Noteworthy technology acquisitions 2021"
+            description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+          />
 
-        <Card
-          icon="twitter"
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
+          <Card
+            icon="twitter"
+            title="Noteworthy technology acquisitions 2021"
+            description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+          />
 
-        <Card
-          image="https://flowbite-svelte.com/images/image-1.webp"
-          icon="twitter"
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
+          <Card
+            image="https://flowbite-svelte.com/images/image-1.webp"
+            icon="twitter"
+            title="Noteworthy technology acquisitions 2021"
+            description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+          />
 
-        <Card
-          image="https://flowbite-svelte.com/images/image-1.webp"
-          title="Noteworthy technology acquisitions 2021"
-          reverse
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
+          <Card
+            image="https://flowbite-svelte.com/images/image-1.webp"
+            title="Noteworthy technology acquisitions 2021"
+            reverse
+            description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+          />
 
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          reverse
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        >
-          <Button>Button example</Button>
-        </Card>
-      </div>
+          <Card
+            title="Noteworthy technology acquisitions 2021"
+            reverse
+            description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+          >
+            <Button>Button example</Button>
+          </Card>
+        </div>
 
-      <div class="slot-cards-hor">
-        <Card
-          image="https://flowbite-svelte.com/images/image-1.webp"
-          horizontal
-          icon="twitter"
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
+        <div class="slot-cards-hor">
+          <Card
+            image="https://flowbite-svelte.com/images/image-1.webp"
+            horizontal
+            icon="twitter"
+            title="Noteworthy technology acquisitions 2021"
+            description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+          />
 
-        <Card
-          image="https://flowbite-svelte.com/images/image-1.webp"
-          horizontal
-          reverse
-          icon="twitter"
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
-      </div>
+          <Card
+            image="https://flowbite-svelte.com/images/image-1.webp"
+            horizontal
+            reverse
+            icon="twitter"
+            title="Noteworthy technology acquisitions 2021"
+            description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+          />
+        </div>
+      </Component>
+    </div>
+
+    <Component
+      name="FaqsCategory.svelte"
+      importName="import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
+      <FaqsCategory faqsCategories={faqsCategoryData} />
+    </Component>
+
+    <Component
+      name="Map.svelte"
+      importName="import Map from '@/components/generic-ui/Map.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true, bugs: true }}
+    >
+      <Map lat={41.390205} long={2.154007} zoom={11} />
+    </Component>
+
+    <Component name="Faqs.svelte" importName="import Faqs from '@/components/generic-ui/Faqs.svelte'">
+      <Faqs />
     </Component>
 
     <Component
@@ -179,38 +210,18 @@
       <Button click={() => (modal = !modal)}>Open modal</Button>
     </Component>
 
-    <Component
-      name="Map.svelte"
-      importName="import Map from '@/components/generic-ui/Map.svelte'"
-      attributes={{ done: true, hydrate: true, responsive: true, bugs: true }}
-    >
-      <Map lat={41.390205} long={2.154007} zoom={11} />
-    </Component>
-
     <Component name="Opinions.svelte" importName="import Opinions from '@/components/generic-ui/Opinions.svelte'">Opinions</Component>
 
     <Component name="Slider.svelte" importName="import Slider from '@/components/generic-ui/Slider.svelte'">
       <Slider>
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
-        <Card
-          title="Noteworthy technology acquisitions 2021"
-          description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
-        />
+        {#each new Array(5) as _}
+          <div class="padding">
+            <Card
+              title="Noteworthy technology acquisitions 2021"
+              description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+            />
+          </div>
+        {/each}
       </Slider>
     </Component>
 
@@ -220,23 +231,6 @@
       attributes={{ done: true, hydrate: true, responsive: false }}
     >
       <Pagination currentPage={2} totalPages={20} />
-    </Component>
-
-    <Component name="Faqs.svelte" importName="import Faqs from '@/components/generic-ui/Faqs.svelte'">
-      <Faqs>
-        <!--<div class="Q1">
-          <span>Pregunta</span>
-          <span>Respuesta</span>
-        </div>-->
-      </Faqs>
-    </Component>
-
-    <Component
-      name="FaqsCategory.svelte"
-      importName="import FaqsCategory from '@/components/generic-ui/FaqsCategory.svelte'"
-      attributes={{ done: true, hydrate: true, responsive: true }}
-    >
-      <FaqsCategory faqsCategories={faqsCategoryData} />
     </Component>
 
     <Component name="Gallery.svelte" importName="import Gallery from '@/components/generic-ui/Gallery.svelte'">Gallery</Component>
