@@ -9,6 +9,7 @@
   import Range from '@/components/essentials/Range.svelte'
   import Select from '@/components/essentials/Select.svelte'
   import MenuBasic from '@/components/essentials/menus/MenuBasic.svelte'
+  import MenuLogin from '@/components/essentials/menus/MenuLogin.svelte'
   import MenuVertical from '@/components/essentials/menus/MenuVertical.svelte'
   import Footer from '@/components/essentials/footers/Footer.svelte'
   import DarkMode from '@/components/essentials/DarkMode.svelte'
@@ -198,8 +199,12 @@
       <MenuBasic />
     </Component>
 
-    <Component name="MenuVertical.svelte" importName="import Menu from '@/components/essentials/menus/MenuVertical.svelte'">
+    <Component name="MenuVertical.svelte" importName="import MenuVertical from '@/components/essentials/menus/MenuVertical.svelte'">
       <MenuVertical />
+    </Component>
+
+    <Component name="MenuLogin.svelte" importName="import MenuLogin from '@/components/essentials/menus/MenuLogin.svelte'">
+      <MenuLogin />
     </Component>
   </div>
 
