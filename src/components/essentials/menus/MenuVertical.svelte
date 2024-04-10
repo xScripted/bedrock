@@ -76,13 +76,13 @@
 
         height: 60px;
         width: 60px;
-        border-radius: 50px;
+        border-radius: 8px;
         flex-shrink: 0;
 
-        /*overflow: hidden;
+        overflow: hidden;
         box-shadow:
           3px 3px 10px var(--colorBackground),
-          -3px -3px 10px var(--colorBase2);*/
+          -3px -3px 10px var(--colorBase2);
 
         img {
           border-radius: 8px;
