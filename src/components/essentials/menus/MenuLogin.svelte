@@ -1,7 +1,7 @@
 <script lang="ts">
   import Svg from '@/components/essentials/Svg.svelte'
 
-  export let profilePicture: string = ''
+  export let profilePicture: string = 'https://pbs.twimg.com/media/GKWHxTuW0AA5QPc?format=jpg&name=900x900'
 
   interface ILink {
     title: string
@@ -15,6 +15,12 @@
   ]
 
   let options: ILink[] = [
+    { title: 'Honolulu', href: '' },
+    { title: 'Honolulu', href: '' },
+    { title: 'Honolulu', href: '' },
+  ]
+
+  let notifications: ILink[] = [
     { title: 'Honolulu', href: '' },
     { title: 'Honolulu', href: '' },
     { title: 'Honolulu', href: '' },
@@ -34,10 +40,10 @@
     .left {
       width: fit-content;
       display: flex;
-      gap: 20px;
+      gap: 10px;
 
       .link {
-        padding: 5px 10px;
+        padding: 8px 18px;
         border-radius: 8px;
         transition: 0.3s ease;
 
@@ -55,56 +61,31 @@
       align-items: center;
       gap: 20px;
 
-      .profilePicture {
+      .profile {
+        position: relative;
         height: 50px;
         width: 50px;
-        border-radius: 50px;
-        position: relative;
 
-        box-shadow:
-          3px 3px 10px var(--colorBackground),
-          -3px -3px 10px var(--colorBase2);
-
-        img {
+        .profile-picture {
           height: 100%;
-        }
+          width: 100%;
+          border-radius: 50px;
+          display: flex;
+          overflow: hidden;
 
-        .account {
-          position: absolute;
-          width: fit-content;
-          height: fit-content;
-          min-width: 130px;
-          padding: 10px 15px;
+          box-shadow:
+            3px 3px 10px var(--colorBackground),
+            -3px -3px 10px var(--colorBase2);
 
-          background-color: var(--colorBase2);
-          border-radius: 8px;
+          cursor: pointer;
 
-          top: 65px;
-          right: 0px;
-          display: none;
-
-          .options {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            margin-right: 5px;
-            text-align: end;
-          }
-
-          .divisor {
-            width: 100%;
-            height: 1px;
-            background-color: var(--colorBorder);
-            margin: 5px 0;
-          }
-
-          .signOut {
-            font-size: 13px;
+          img {
+            height: 100%;
           }
         }
 
         &:hover {
-          .account {
+          .dropdown-container {
             display: block;
           }
         }
@@ -117,12 +98,102 @@
         width: 40px;
         padding: 5px;
         border-radius: 8px;
+        position: relative;
+
+        .bell {
+          height: 100%;
+          width: 100%;
+
+          cursor: pointer;
+        }
+
+        .dropdown-container {
+          padding-top: 10px;
+          top: 40px;
+
+          .dropdown {
+            padding: 10px;
+
+            .options {
+              width: 100%;
+              margin-right: 0;
+              margin-bottom: 0;
+
+              .option {
+                padding: 5px 10px;
+                border-radius: 8px;
+                border: 1px solid var(--colorBase2);
+
+                &:hover {
+                  border: 1px solid var(--colorBorder);
+                  color: var(--colorText);
+                }
+              }
+            }
+          }
+        }
 
         &:hover {
           transition: 0.3s ease;
           box-shadow:
             3px 3px 10px var(--colorBackground),
             -3px -3px 10px var(--colorBase2);
+
+          .dropdown-container {
+            display: block;
+          }
+        }
+      }
+
+      .dropdown-container {
+        width: fit-content;
+        height: fit-content;
+        padding-top: 20px;
+        position: absolute;
+
+        right: 0px;
+        top: 45px;
+        display: none;
+
+        .dropdown {
+          min-width: 130px;
+          padding: 10px 15px;
+
+          background-color: var(--colorBase2);
+          border-radius: 8px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: end;
+
+          .options {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            margin-right: 5px;
+            width: fit-content;
+            gap: 5px;
+          }
+
+          .option:hover {
+            color: var(--colorBrand);
+          }
+
+          .divisor {
+            width: 100%;
+            height: 1px;
+            background-color: var(--colorBorder);
+            margin: 5px 0;
+          }
+
+          .sign-out {
+            font-size: 13px;
+            color: var(--colorText2);
+
+            &:hover {
+              color: var(--colorBrand);
+            }
+          }
         }
       }
     }
@@ -137,20 +208,35 @@
   </div>
 
   <div class="right">
-    <button class="notifications">
-      <Svg name="bellOff" height="30" width="30" />
-    </button>
-    <button class="profilePicture">
-      <img src={profilePicture} alt="" />
-      <div class="account">
-        <div class="options">
-          {#each options as option}
-            <a href={option.href} class="option">{option.title}</a>
-          {/each}
-        </div>
-        <div class="divisor" />
-        <button class="signOut">Cerrar sesión</button>
+    <div class="notifications">
+      <div class="bell">
+        <Svg name="bellOff" height="30" width="30" />
       </div>
-    </button>
+      <div class="dropdown-container">
+        <div class="dropdown">
+          <div class="options">
+            {#each notifications as notification}
+              <a href={notification.href} class="option">{notification.title}</a>
+            {/each}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile">
+      <a class="profile-picture" href="añksdj">
+        <img src={profilePicture} alt="" />
+      </a>
+      <div class="dropdown-container">
+        <div class="dropdown">
+          <div class="options">
+            {#each options as option}
+              <a href={option.href} class="option">{option.title}</a>
+            {/each}
+          </div>
+          <div class="divisor" />
+          <button class="sign-out">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

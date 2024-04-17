@@ -15,6 +15,7 @@
   import Gallery from '@/components/generic-ui/Gallery.svelte'
   import ContactForm from '@/components/generic-ui/ContactForm.svelte'
   import Slider from '@/components/generic-ui/Slider.svelte'
+  import SliderX from '@/components/generic-ui/SliderX.svelte'
 
   let modal: boolean = false
 
@@ -223,6 +224,19 @@
           </div>
         {/each}
       </Slider>
+    </Component>
+
+    <Component name="SliderX.svelte" importName="import SliderX from '@/components/generic-ui/SliderX.svelte'">
+      <SliderX>
+        {#each new Array(5) as _}
+          <div class="padding">
+            <Card
+              title="Noteworthy technology acquisitions 2021"
+              description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+            />
+          </div>
+        {/each}
+      </SliderX>
     </Component>
 
     <Component
