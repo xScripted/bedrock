@@ -46,64 +46,64 @@
       display: none;
     }
 
-    .arrows {
-      display: flex;
-      gap: 10px;
-
-      .arrow {
-        width: 50px;
-        height: 50px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        border: 1px solid var(--colorBase);
-        border-radius: 100%;
-        transition: 0.3s ease;
-
-        :global(svg) {
-          transform: translateX(1px);
-        }
-
-        &.disabled {
-          opacity: 0.2;
-        }
-
-        &.left {
-          transform: rotate(180deg);
-        }
-
-        &:hover {
-          transition: 0.3s ease;
-          border: 1px solid var(--colorBorder);
-        }
-      }
-    }
-
     .slides {
       display: flex;
       transition: 0.3s ease;
+    }
+  }
 
-      border-right: 5px solid red;
+  .arrows {
+    display: flex;
+    gap: 10px;
+
+    .arrow {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border: 1px solid var(--colorBase);
+      border-radius: 100%;
+      transition: 0.3s ease;
+
+      :global(svg) {
+        transform: translateX(1px);
+      }
+
+      &.disabled {
+        opacity: 0.2;
+      }
+
+      &.left {
+        transform: rotate(180deg);
+      }
+
+      &:hover {
+        transition: 0.3s ease;
+        border: 1px solid var(--colorBorder);
+      }
     }
   }
 </style>
 
-<div class="slider-x">
-  <div class="g-wrapper">
-    <div class="slides" bind:this={HTMLslides}>
-      <slot />
+<div class="container-slider">
+  <div class="slider-x">
+    <div class="g-wrapper">
+      <div class="slides" bind:this={HTMLslides}>
+        <slot />
+      </div>
     </div>
+  </div>
 
-    <div class="arrows">
-      <button class="arrow left" class:disabled={disablePrev} on:click={previous}>
-        <Svg name="arrowSlim" width="25" height="25" />
-      </button>
+  <div class="arrows g-wrapper">
+    <button class="arrow left" class:disabled={disablePrev} on:click={previous}>
+      <Svg name="arrowSlim" width="25" height="25" />
+    </button>
 
-      <button class="arrow right" class:disabled={disableNext} on:click={next}>
-        <Svg name="arrowSlim" width="25" height="25" />
-      </button>
-    </div>
+    <button class="arrow right" class:disabled={disableNext} on:click={next}>
+      <Svg name="arrowSlim" width="25" height="25" />
+    </button>
   </div>
 </div>
