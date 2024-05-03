@@ -4,6 +4,7 @@
 
   /*🧪 Miscellaneous*/
   import AccordionGallery from '@/components/miscellaneous/AccordionGallery.svelte'
+  import PaperPages from '@/components/miscellaneous/PaperPages.svelte'
 
   export const accordionGalleryItems = [
     {
@@ -53,5 +54,23 @@
     attributes={{ done: true, responsive: false, expand: true }}
   >
     <AccordionGallery items={accordionGalleryItems} />
+  </Component>
+
+  <Component
+    name="PaperPages.svelte"
+    importName="import PaperPages from '@/components/miscellaneous/PaperPages.svelte'"
+    attributes={{ done: true, responsive: false, expand: true }}
+  >
+    <PaperPages>
+      <span class="page-wrapper" style="--y:0.5; --x: 0; --z: 0deg">
+        <section class="problems-section g-wrapper">Content A</section>
+      </span>
+      <span class="page-wrapper" style="--y:0.6; --x: 0; --z: 2deg">
+        <section class="problems-section g-wrapper">Content B</section>
+      </span>
+      <span class="page-wrapper" style="--y:0.7; --x: 0; --z: -2deg">
+        <section class="problems-section g-wrapper">Content C</section>
+      </span>
+    </PaperPages>
   </Component>
 </Dropdown>
