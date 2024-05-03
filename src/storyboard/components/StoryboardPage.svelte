@@ -99,7 +99,30 @@
 
     <Templates />
 
-    <Dropdown title="🌐 Interest pages"></Dropdown>
+    <Dropdown title="🌐 Interest pages">
+      <div class="tasks">
+        <div class="task">
+          <a href="https://www.awwwards.com/" class="component">awwwards (site of the day)</a>
+          <div class="issue">Ejemplo diseños.</div>
+        </div>
+        <div class="task">
+          <a href="https://www.lapa.ninja/" class="component">lapa</a>
+          <div class="issue">Ejemplo diseños.</div>
+        </div>
+        <div class="task">
+          <a href="https://wonderdynamics.com/" class="component">Wonder dynamics</a>
+          <div class="issue">Página web del estudio de video e inteligencia artificial 3D.</div>
+        </div>
+        <div class="task">
+          <a href="https://openui.fly.dev/" class="component">openui</a>
+          <div class="issue">Convertidor de imágen a código.</div>
+        </div>
+        <div class="task">
+          <a href="https://publicapis.dev/" class="component">publicapis</a>
+          <div class="issue">APIs públicas.</div>
+        </div>
+      </div>
+    </Dropdown>
 
     <Dropdown title="📌 Tasks">
       <div class="tasks">
