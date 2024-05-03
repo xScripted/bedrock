@@ -16,6 +16,7 @@
   import ContactForm from '@/components/generic-ui/ContactForm.svelte'
   import Slider from '@/components/generic-ui/Slider.svelte'
   import SliderX from '@/components/generic-ui/SliderX.svelte'
+  import CompareImages from '@/components/generic-ui/CompareImages.svelte'
 
   let modal: boolean = false
 
@@ -254,6 +255,17 @@
       attributes={{ done: true, hydrate: true, responsive: true }}
     >
       <ContactForm />
+    </Component>
+
+    <Component
+      name="CompareImages.svelte"
+      importName="import CompareImages from '@/components/generic-ui/CompareImages.svelte'"
+      attributes={{ done: true, hydrate: true, responsive: true }}
+    >
+      <CompareImages
+        imageA="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png"
+        imageB="https://pm1.aminoapps.com/7639/6360537e8c5cd658baf0b6363d5f3f147a005f2cr1-840-1012v2_uhq.jpg"
+      />
     </Component>
   </div>
 </Dropdown>
