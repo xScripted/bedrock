@@ -6,6 +6,7 @@
   import Input from '@/components/essentials/Input.svelte'
   import Checkbox from '@/components/essentials/Checkbox.svelte'
   import Button from '@/components/essentials/Button.svelte'
+  import Dropdown2 from '@/components/essentials/Dropdown2.svelte'
   import Range from '@/components/essentials/Range.svelte'
   import Select from '@/components/essentials/Select.svelte'
   import MenuBasic from '@/components/essentials/menus/MenuBasic.svelte'
@@ -168,6 +169,10 @@
           <span>Disabled</span>
         </Button>
       </div>
+    </Component>
+
+    <Component>
+      <Dropdown2 />
     </Component>
 
     <Component
