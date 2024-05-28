@@ -4,13 +4,12 @@ Todo lo necesario para llevar a cabo un proyecto web de forma modular
 
 ### ⚙️ Tareas:
 
-1.  Actualizar: site: "https://www.beebothecoder.com" (astro.config.mjs),
+1.  Actualizar: site: "https://www.example.com" (astro.config.mjs),
 2.  Decidir si va a ser **Static Site or SSR**, en el caso de ser SSR añadir el adaptador de cloudflare: https://docs.astro.build/es/guides/integrations-guide/cloudflare/
-3.  ` npm run update 	`
-4.  Cambiar redirección en index.astro
-5.  Determinar los colores en variables.scss
-6.  Layout.astro: Cambiar las fuentes (default: Poppins) & defaults.scss cambiar la font-family
-7.  Añadir logo a public/assets/favicon.svg
+3.  Determinar los colores en variables.scss
+4.  ` npm run update 	`
+5.  Layout.astro: Cambiar las fuentes (default: Poppins) & defaults.scss cambiar la font-family
+6.  Añadir logo a public/assets/favicon.svg
 
 ### 🧩 Plugins
 
