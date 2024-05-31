@@ -4,7 +4,14 @@
 declare namespace svelteHTML {
   interface HTMLAttributes<T> {
     theme?: string
-    reveal?: string
+    reveal?: any
     onsubmit?: string
+  }
+}
+
+declare namespace astroHTML.JSX {
+  interface HTMLAttributes {
+    reveal?: any
+    revealed?: any
   }
 }
