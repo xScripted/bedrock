@@ -17,8 +17,7 @@ Todo lo necesario para llevar a cabo un proyecto web de forma modular
 
 https://docs.astro.build/en/guides/astro-db/
 
-Installation
-`git merge plugin-astro-db && npm i`
+Installation git merge plugin-astro-db && npm i
 
 #### 🪪 Auth
 

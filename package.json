@@ -4,13 +4,12 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "node scripts/readUrls && astro sync && astro dev",
-    "build": "node scripts/hidePrivate && astro build --remote && node scripts/addPrivate",
+    "build": "node scripts/hidePrivate && astro build && node scripts/addPrivate",
     "preview": "astro preview",
     "update": "ncu -u && npm install"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",
-    "@astrojs/db": "^0.9.4",
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/svelte": "^5.2.0",
     "astro": "^4.5.6",
