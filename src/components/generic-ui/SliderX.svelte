@@ -43,7 +43,7 @@
 </script>
 
 <style lang="scss">
-  @import '../sass/mixins.scss';
+  @import 'src/sass/mixins.scss';
 
   .container-slider {
     padding: 20px 0;
