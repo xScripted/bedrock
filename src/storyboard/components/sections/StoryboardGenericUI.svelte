@@ -17,6 +17,7 @@
   import Slider from '@/components/generic-ui/Slider.svelte'
   import SliderX from '@/components/generic-ui/SliderX.svelte'
   import CompareImages from '@/components/generic-ui/CompareImages.svelte'
+  import LeadCard from '@/components/generic-ui/LeadCard.svelte'
 
   let modal: boolean = false
 
@@ -149,6 +150,10 @@
         </div>
       </Component>
     </div>
+
+    <Component name="LeadCard.svelte" importName="import LeadCard from '@/components/generic-ui/LeadCard.svelte'">
+      <LeadCard />
+    </Component>
 
     <Component
       name="FaqsCategory.svelte"
