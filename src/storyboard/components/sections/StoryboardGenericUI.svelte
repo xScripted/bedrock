@@ -19,6 +19,7 @@
   import CompareImages from '@/components/generic-ui/CompareImages.svelte'
   import LeadCard from '@/components/generic-ui/LeadCard.svelte'
   import Chart from '@/components/generic-ui/Chart.svelte'
+  import Calendar from '@/components/generic-ui/Calendar.svelte'
 
   let modal: boolean = false
 
@@ -151,6 +152,10 @@
         </div>
       </Component>
     </div>
+
+    <Component name="Calendar.svelte" importName="import Calendar from '@/components/generic-ui/Calendar.svelte'">
+      <Calendar />
+    </Component>
 
     <Component name="LeadCard.svelte" importName="import LeadCard from '@/components/generic-ui/LeadCard.svelte'">
       <LeadCard />

@@ -40,7 +40,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    //justify-content: space-between;
     box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
     background-color: var(--colorBase);
     overflow: auto;
