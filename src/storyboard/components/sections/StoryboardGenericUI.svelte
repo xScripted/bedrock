@@ -18,6 +18,7 @@
   import SliderX from '@/components/generic-ui/SliderX.svelte'
   import CompareImages from '@/components/generic-ui/CompareImages.svelte'
   import LeadCard from '@/components/generic-ui/LeadCard.svelte'
+  import Chart from '@/components/generic-ui/Chart.svelte'
 
   let modal: boolean = false
 
@@ -271,6 +272,14 @@
         imageA="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png"
         imageB="https://pm1.aminoapps.com/7639/6360537e8c5cd658baf0b6363d5f3f147a005f2cr1-840-1012v2_uhq.jpg"
       />
+    </Component>
+
+    <Component
+      name="Chart.svelte"
+      importName="import Chart from '@/components/generic-ui/Chart.svelte'"
+      attributes={{ done: false, hydrate: true, responsive: true }}
+    >
+      <Chart />
     </Component>
   </div>
 </Dropdown>
