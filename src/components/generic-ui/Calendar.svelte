@@ -6,6 +6,13 @@
   let currentMonth: number = currentDate.getMonth()
   let currentYear: number = currentDate.getFullYear()
 
+  let month: number = currentMonth
+  let year: number = currentYear
+
+  let firstDay: number = new Date(year, month).getDay()
+  firstDay = firstDay === 0 ? 7 : firstDay
+  let daysInMonth: number = new Date(year, month + 1, 0).getDate()
+
   let months: string[] = [
     'Enero',
     'Febrero',
@@ -21,35 +28,43 @@
     'Diciembre',
   ]
 
-  //pasado diciembre que empiece un nuevo año -> antes de enero que retroceda a diciembre del año anterior
   //que salgan los dias anteriores y posteriores para acabas las 42 casillas
   //que cambien los dias al cambiar de mes
   const nextMonth = () => {
-    currentMonth = currentMonth + 1
+    if (month == 11) {
+      month = 0
+      year++
+
+      daysInMonth = new Date(year, month + 1, 0).getDate()
+      firstDay = new Date(year, month).getDay()
+      firstDay = firstDay === 0 ? 7 : firstDay
+
+      return
+    }
+
+    month++
+    daysInMonth = new Date(year, month + 1, 0).getDate()
+    firstDay = new Date(year, month).getDay()
+    firstDay = firstDay === 0 ? 7 : firstDay
   }
 
   const pastMonth = () => {
-    currentMonth = currentMonth - 1
-  }
+    if (month == 0) {
+      month = 11
+      year--
+      daysInMonth = new Date(year, month + 1, 0).getDate()
 
-  let firstDay: number = new Date(currentYear, currentMonth).getDay()
-  firstDay = firstDay === 0 ? 7 : firstDay
+      firstDay = new Date(year, month).getDay()
+      firstDay = firstDay === 0 ? 7 : firstDay
 
-  const daysInMonth: number = new Date(currentYear, currentMonth + 1, 0).getDate()
-
-  /*const getLastDayMonth = (): number => {
-    const tempDate = new Date()
-    const initialMonth: number = tempDate.getMonth()
-    let tempMonth: number = tempDate.getMonth()
-
-    while (initialMonth === tempMonth) {
-      tempDate.setDate(tempDate.getDate() + 1)
-      tempMonth = tempDate.getMonth()
+      return
     }
 
-    tempDate.setDate(tempDate.getDate() - 1)
-    return tempDate.getDate()
-  }*/
+    month--
+    daysInMonth = new Date(year, month + 1, 0).getDate()
+    firstDay = new Date(year, month).getDay()
+    firstDay = firstDay === 0 ? 7 : firstDay
+  }
 </script>
 
 <style lang="scss">
@@ -60,11 +75,12 @@
 
     height: fit-content;
     width: fit-content;
-    padding: 20px 25px;
+    padding: 20px;
 
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    gap: 20px;
 
     .info {
       width: 100%;
@@ -76,6 +92,11 @@
         background-color: var(--colorBorder);
         padding: 5px 15px;
         border-radius: 8px;
+        height: 34px;
+        width: 166px;
+
+        display: flex;
+        justify-content: center;
       }
     }
 
@@ -116,7 +137,7 @@
 <div class="calendar">
   <div class="info">
     <button class="past" style="transform: rotate(90deg)" on:click={pastMonth}><Svg name="arrow" /></button>
-    <div class="date">{months[currentMonth]} {currentYear}</div>
+    <div class="date">{months[month]} {year}</div>
     <button class="next" style="transform: rotate(-90deg)" on:click={nextMonth}><Svg name="arrow" /></button>
   </div>
 
@@ -125,7 +146,7 @@
       <div class="section">
         {#if i + 1 - firstDay + 1 > 0}
           {#if i + 1 - firstDay + 1 <= daysInMonth}
-            <div class:dot={i + 1 - firstDay + 1 == currentDay} />
+            <div class:dot={i + 1 - firstDay + 1 == currentDay && month == currentMonth && year == currentYear} />
 
             <div class="days">
               {i + 1 - firstDay + 1}
