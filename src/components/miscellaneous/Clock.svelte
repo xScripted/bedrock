@@ -37,11 +37,12 @@
       justify-content: space-around;
 
       .day {
-        color: var(--colorText3);
+        color: var(--colorText2);
         font-size: 13px;
 
         &.active {
-          color: white;
+          color: var(--colorText);
+          font-weight: bold;
         }
       }
     }
@@ -62,14 +63,14 @@
 
         .title {
           margin-top: -15px;
-          color: var(--colorText3);
+          color: var(--colorText2);
           font-size: 13px;
         }
       }
 
       .mid {
         font-size: 50px;
-        color: var(--colorText3);
+        color: var(--colorText2);
       }
     }
   }

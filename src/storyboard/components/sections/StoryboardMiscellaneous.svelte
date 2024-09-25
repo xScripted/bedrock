@@ -5,6 +5,7 @@
   /*🧪 Miscellaneous*/
   import AccordionGallery from '@/components/miscellaneous/AccordionGallery.svelte'
   import PaperPages from '@/components/miscellaneous/PaperPages.svelte'
+  import Clock from '@/components/miscellaneous/Clock.svelte'
 
   export const accordionGalleryItems = [
     {
@@ -47,6 +48,14 @@
 
 <Dropdown title="🧪 Miscellaneous">
   <h3 class="storyboard-title">Miscellaneous</h3>
+
+  <Component
+    name="Clock.svelte"
+    importName="import Clock from '@/components/miscellaneous/Clock.svelte'"
+    attributes={{ done: true, responsive: false, expand: true }}
+  >
+    <Clock />
+  </Component>
 
   <Component
     name="AccordionGallery.svelte"

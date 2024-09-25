@@ -32,11 +32,9 @@
           easing: 'easeOutBounce', // Tipo de transición (puedes probar otros como 'linear', 'easeInOutQuad', etc.)
           onProgress: function (animation) {
             // Función de callback para cada frame de la animación
-            console.log('Progreso:', animation.currentStep / animation.numSteps)
           },
           onComplete: function (animation) {
             // Función de callback cuando termina la animación
-            console.log('¡Animación completada!')
           },
         },
       },

@@ -26,8 +26,6 @@
       message: 'aaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAA',
     },
   ]
-
-  console.log(leads)
 </script>
 
 <style lang="scss">

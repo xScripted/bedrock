@@ -41,6 +41,7 @@
     display: flex;
     flex-direction: column;
     //justify-content: space-between;
+    align-items: center;
     box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
     background-color: var(--colorBase);
     overflow: auto;
