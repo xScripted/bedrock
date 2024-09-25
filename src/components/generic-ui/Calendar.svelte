@@ -1,18 +1,6 @@
 <script lang="ts">
   import Svg from '@/components/essentials/Svg.svelte'
 
-  let currentDate = new Date()
-  let currentDay: number = currentDate.getDate()
-  let currentMonth: number = currentDate.getMonth()
-  let currentYear: number = currentDate.getFullYear()
-
-  let month: number = currentMonth
-  let year: number = currentYear
-
-  let firstDay: number = new Date(year, month).getDay()
-  firstDay = firstDay === 0 ? 7 : firstDay
-  let daysInMonth: number = new Date(year, month + 1, 0).getDate()
-
   let months: string[] = [
     'Enero',
     'Febrero',
@@ -28,42 +16,65 @@
     'Diciembre',
   ]
 
-  //que salgan los dias anteriores y posteriores para acabas las 42 casillas
-  //que cambien los dias al cambiar de mes
+  const currentDate: Date = new Date()
+  const currentDay: number = currentDate.getDate()
+  const currentMonth: number = currentDate.getMonth()
+  const currentYear: number = currentDate.getFullYear()
+
+  let month: number = currentMonth
+  let year: number = currentYear
+
+  let firstDayMonth: Date = new Date(year, month)
+  let firstWeekDayMonth: number = firstDayMonth.getDay() === 0 ? 7 : firstDayMonth.getDay()
+  //let daysInMonth: number = new Date(year, month + 1, 0).getDate()
+
+  let firstArrayDay: Date = new Date(year, month, firstDayMonth.getDate() - firstWeekDayMonth)
+  let monthArray: Date[] = []
+
+  for (let x = 0; x < 42; x++) {
+    monthArray.push(new Date(firstArrayDay.setDate(firstArrayDay.getDate() + 1)))
+  }
+
   const nextMonth = () => {
     if (month == 11) {
       month = 0
       year++
 
-      daysInMonth = new Date(year, month + 1, 0).getDate()
-      firstDay = new Date(year, month).getDay()
-      firstDay = firstDay === 0 ? 7 : firstDay
-
       return
     }
 
     month++
-    daysInMonth = new Date(year, month + 1, 0).getDate()
-    firstDay = new Date(year, month).getDay()
-    firstDay = firstDay === 0 ? 7 : firstDay
+
+    monthArray = []
+
+    firstDayMonth = new Date(year, month)
+    firstWeekDayMonth = firstDayMonth.getDay() === 0 ? 7 : firstDayMonth.getDay()
+    firstArrayDay = new Date(year, month, firstDayMonth.getDate() - firstWeekDayMonth)
+
+    for (let x = 0; x < 42; x++) {
+      monthArray.push(new Date(firstArrayDay.setDate(firstArrayDay.getDate() + 1)))
+    }
   }
 
   const pastMonth = () => {
     if (month == 0) {
       month = 11
       year--
-      daysInMonth = new Date(year, month + 1, 0).getDate()
-
-      firstDay = new Date(year, month).getDay()
-      firstDay = firstDay === 0 ? 7 : firstDay
 
       return
     }
 
     month--
-    daysInMonth = new Date(year, month + 1, 0).getDate()
-    firstDay = new Date(year, month).getDay()
-    firstDay = firstDay === 0 ? 7 : firstDay
+
+    monthArray = []
+
+    firstDayMonth = new Date(year, month)
+    firstWeekDayMonth = firstDayMonth.getDay() === 0 ? 7 : firstDayMonth.getDay()
+    firstArrayDay = new Date(year, month, firstDayMonth.getDate() - firstWeekDayMonth)
+
+    for (let x = 0; x < 42; x++) {
+      monthArray.push(new Date(firstArrayDay.setDate(firstArrayDay.getDate() + 1)))
+    }
   }
 </script>
 
@@ -129,6 +140,10 @@
           background-color: var(--colorBase);
           border-radius: 100%;
         }
+
+        .days.notMonth {
+          color: var(--colorBase);
+        }
       }
     }
   }
@@ -142,17 +157,10 @@
   </div>
 
   <div class="grid">
-    {#each new Array(42) as section, i}
+    {#each monthArray as date}
       <div class="section">
-        {#if i + 1 - firstDay + 1 > 0}
-          {#if i + 1 - firstDay + 1 <= daysInMonth}
-            <div class:dot={i + 1 - firstDay + 1 == currentDay && month == currentMonth && year == currentYear} />
-
-            <div class="days">
-              {i + 1 - firstDay + 1}
-            </div>
-          {/if}
-        {/if}
+        <div class:dot={date.getDate() == currentDay && month == currentMonth && year == currentYear} />
+        <div class="days" class:notMonth={date.getMonth() != month}>{date.getDate()}</div>
       </div>
     {/each}
   </div>
