@@ -1,81 +1,39 @@
 <script lang="ts">
   import Svg from '@/components/essentials/Svg.svelte'
 
-  let months: string[] = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre',
-  ]
+  const weekdays: string[] = ['L', 'M', 'X', 'J', 'V', 'S', 'D']
 
   const currentDate: Date = new Date()
   const currentDay: number = currentDate.getDate()
   const currentMonth: number = currentDate.getMonth()
   const currentYear: number = currentDate.getFullYear()
 
-  let month: number = currentMonth
-  let year: number = currentYear
-
-  let firstDayMonth: Date = new Date(year, month)
-  let firstWeekDayMonth: number = firstDayMonth.getDay() === 0 ? 7 : firstDayMonth.getDay()
-  //let daysInMonth: number = new Date(year, month + 1, 0).getDate()
-
-  let firstArrayDay: Date = new Date(year, month, firstDayMonth.getDate() - firstWeekDayMonth)
+  let monthDate = new Date()
   let monthArray: Date[] = []
 
-  for (let x = 0; x < 42; x++) {
-    monthArray.push(new Date(firstArrayDay.setDate(firstArrayDay.getDate() + 1)))
+  const refreshMonth = () => {
+    monthArray = []
+
+    const firstDayMonth: Date = new Date(monthDate.getFullYear(), monthDate.getMonth())
+    const firstWeekDayMonth: number = firstDayMonth.getDay() === 0 ? 7 : firstDayMonth.getDay()
+    const firstArrayDay: Date = new Date(monthDate.getFullYear(), monthDate.getMonth(), firstDayMonth.getDate() - firstWeekDayMonth)
+
+    for (let x = 0; x < 42; x++) {
+      monthArray.push(new Date(firstArrayDay.setDate(firstArrayDay.getDate() + 1)))
+    }
   }
 
   const nextMonth = () => {
-    if (month == 11) {
-      month = 0
-      year++
-
-      return
-    }
-
-    month++
-
-    monthArray = []
-
-    firstDayMonth = new Date(year, month)
-    firstWeekDayMonth = firstDayMonth.getDay() === 0 ? 7 : firstDayMonth.getDay()
-    firstArrayDay = new Date(year, month, firstDayMonth.getDate() - firstWeekDayMonth)
-
-    for (let x = 0; x < 42; x++) {
-      monthArray.push(new Date(firstArrayDay.setDate(firstArrayDay.getDate() + 1)))
-    }
+    monthDate = new Date(monthDate.setMonth(monthDate.getMonth() + 1))
+    refreshMonth()
   }
 
   const pastMonth = () => {
-    if (month == 0) {
-      month = 11
-      year--
-
-      return
-    }
-
-    month--
-
-    monthArray = []
-
-    firstDayMonth = new Date(year, month)
-    firstWeekDayMonth = firstDayMonth.getDay() === 0 ? 7 : firstDayMonth.getDay()
-    firstArrayDay = new Date(year, month, firstDayMonth.getDate() - firstWeekDayMonth)
-
-    for (let x = 0; x < 42; x++) {
-      monthArray.push(new Date(firstArrayDay.setDate(firstArrayDay.getDate() + 1)))
-    }
+    monthDate = new Date(monthDate.setMonth(monthDate.getMonth() - 1))
+    refreshMonth()
   }
+
+  refreshMonth()
 </script>
 
 <style lang="scss">
@@ -91,7 +49,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
 
     .info {
       width: 100%;
@@ -108,41 +66,57 @@
 
         display: flex;
         justify-content: center;
+        text-transform: capitalize;
       }
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      height: 350px;
+    .table {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
 
-      .section {
-        width: 50px;
-        height: 50px;
-        position: relative;
+      .week {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+        font-size: 13px;
+      }
 
-        background-color: var(--colorBorder);
-        border-radius: 8px;
-        margin: 5px;
-        padding: 3px 8px;
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        height: 350px;
 
-        display: flex;
-        align-items: end;
-        justify-content: end;
+        .section {
+          width: 50px;
+          height: 50px;
+          position: relative;
 
-        .dot {
-          height: 10px;
-          width: 10px;
-          position: absolute;
-          top: 5px;
-          left: 5px;
+          background-color: var(--colorBorder);
+          border-radius: 8px;
+          margin: 5px;
+          padding: 3px 8px;
 
-          background-color: var(--colorBase);
-          border-radius: 100%;
-        }
+          display: flex;
+          align-items: end;
+          justify-content: end;
 
-        .days.notMonth {
-          color: var(--colorBase);
+          .dot {
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+
+            background-color: var(--colorBase);
+            border-radius: 100%;
+          }
+
+          .days.notMonth {
+            color: var(--colorBase);
+          }
         }
       }
     }
@@ -152,16 +126,24 @@
 <div class="calendar">
   <div class="info">
     <button class="past" style="transform: rotate(90deg)" on:click={pastMonth}><Svg name="arrow" /></button>
-    <div class="date">{months[month]} {year}</div>
+    <div class="date">{new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(monthDate)} {monthDate.getFullYear()}</div>
     <button class="next" style="transform: rotate(-90deg)" on:click={nextMonth}><Svg name="arrow" /></button>
   </div>
 
-  <div class="grid">
-    {#each monthArray as date}
-      <div class="section">
-        <div class:dot={date.getDate() == currentDay && month == currentMonth && year == currentYear} />
-        <div class="days" class:notMonth={date.getMonth() != month}>{date.getDate()}</div>
-      </div>
-    {/each}
+  <div class="table">
+    <div class="week">
+      {#each weekdays as weekday}
+        <span>{weekday}</span>
+      {/each}
+    </div>
+
+    <div class="grid">
+      {#each monthArray as date}
+        <div class="section">
+          <div class:dot={date.getDate() == currentDay && monthDate.getMonth() == currentMonth && monthDate.getFullYear() == currentYear} />
+          <div class="days" class:notMonth={date.getMonth() != monthDate.getMonth()}>{date.getDate()}</div>
+        </div>
+      {/each}
+    </div>
   </div>
 </div>
