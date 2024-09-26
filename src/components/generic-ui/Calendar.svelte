@@ -42,8 +42,8 @@
     border-radius: 16px;
     background-color: var(--colorBase);
 
-    height: fit-content;
-    width: fit-content;
+    height: 100%;
+    width: 100%;
     padding: 20px;
 
     display: flex;
@@ -71,6 +71,8 @@
     }
 
     .table {
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -85,13 +87,12 @@
       }
 
       .grid {
+        width: 100%;
+        height: 100%;
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        height: 350px;
 
         .section {
-          width: 50px;
-          height: 50px;
           position: relative;
 
           background-color: var(--colorBorder);
