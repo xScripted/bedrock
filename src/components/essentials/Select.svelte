@@ -15,12 +15,12 @@
   export let id: string = '1'
   export let placeholder: string = 'Select'
   export let options: string[] | IOption[] = []
+  export let value: IValue | string = { main: '', child: '' }
 
   let choices: IOption[] = []
   let isSimple = typeof options[0] === 'string'
-  let value: IValue = { main: '', child: '' }
-  let HTMLContainer
   let isOpen: boolean = false
+  let HTMLContainer: HTMLElement
 
   if (isSimple) {
     choices = options.map((option) => {
@@ -34,9 +34,12 @@
   }
 
   const selectOption = (main: string, child: string = '') => {
-    value = {
-      main,
-      child,
+    if (isSimple) value = main
+    else {
+      value = {
+        main,
+        child,
+      }
     }
 
     isOpen = false
@@ -175,11 +178,13 @@
         <Svg name={icon} fill="var(--colorBrand)" height="20" width="20" />
       {/if}
       <div class="value">
-        {#if !value.main}
-          <span class="placeholder">{placeholder}</span>
+        <span class="placeholder">{placeholder}</span>
+        {#if typeof value != 'string'}
+          <span class="main">{value.main}</span>
+          <span class="child">{value.child}</span>
+        {:else}
+          <span class="main">{value}</span>
         {/if}
-        <span class="main">{value.main}</span>
-        <span class="child">{value.child}</span>
       </div>
     </div>
 
