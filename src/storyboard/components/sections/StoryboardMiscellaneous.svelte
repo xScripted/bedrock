@@ -47,8 +47,6 @@
 </script>
 
 <Dropdown title="🧪 Miscellaneous">
-  <h3 class="storyboard-title">Miscellaneous</h3>
-
   <Component
     name="Clock.svelte"
     importName="import Clock from '@/components/miscellaneous/Clock.svelte'"

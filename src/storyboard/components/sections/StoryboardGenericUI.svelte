@@ -20,6 +20,7 @@
   import LeadCard from '@/components/generic-ui/LeadCard.svelte'
   import Chart from '@/components/generic-ui/Chart.svelte'
   import Calendar from '@/components/generic-ui/Calendar.svelte'
+  import ProgressSteps from '@/components/miscellaneous/ProgressSteps.svelte'
 
   let modal: boolean = false
 
@@ -55,6 +56,29 @@
       category: 'Alquilar',
     },
   ]
+
+  const stepsData = [
+    {
+      icon: 'person',
+      title: 'SUBIR DOCUMENTACIÓN',
+      done: true,
+    },
+    {
+      icon: 'person',
+      title: 'SUBIR DOCUMENTACIÓN',
+      done: true,
+    },
+    {
+      icon: 'person',
+      title: 'SUBIR DOCUMENTACIÓN',
+      done: false,
+    },
+    {
+      icon: 'person',
+      title: 'SUBIR DOCUMENTACIÓN',
+      done: false,
+    },
+  ]
 </script>
 
 <style lang="scss">
@@ -86,6 +110,14 @@
 </style>
 
 <Dropdown title="🧩 Generic UI">
+  <Component
+    name="ProgressSteps.svelte"
+    importName="import Progress Steps from '@/components/miscellaneous/ProgressSteps.svelte'"
+    attributes={{ done: true, responsive: false, expand: true }}
+  >
+    <ProgressSteps steps={stepsData} />
+  </Component>
+
   <div class="auto-columns wide">
     <div class="row-span">
       <Component name="Card.svelte" importName="import Card from '@/components/generic-ui/cards/Card.svelte'">
