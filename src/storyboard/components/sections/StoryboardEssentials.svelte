@@ -32,6 +32,8 @@
     toggle_A: false,
     toggle_B: true,
   }
+
+  let selectTest
 </script>
 
 <style lang="scss">
@@ -116,13 +118,16 @@
       importName="import Select from '@/components/essentials/Select.svelte'"
       attributes={{ done: false, hydrate: true, responsive: true }}
     >
-      <Select icon="whatsapp" options={['Pikachu', 'Charmander', 'Squirtle']} />
+      <Select bind:value={selectTest} icon="whatsapp" options={['Pikachu', 'Charmander', 'Squirtle']} />
       <Select
+        bind:value={selectTest}
         options={[
           { main: 'Barcelona', children: ['Centro', 'Gracia', 'Raval'] },
           { main: 'Ripollet', children: ['Centro', 'Norte', 'Sur'] },
         ]}
       />
+
+      {JSON.stringify(selectTest)}
     </Component>
 
     <Component
