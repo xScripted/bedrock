@@ -8,7 +8,7 @@
   const currentMonth: number = currentDate.getMonth()
   const currentYear: number = currentDate.getFullYear()
 
-  let monthDate = new Date()
+  let monthDate: Date = new Date()
   let monthArray: Date[] = []
 
   const refreshMonth = () => {

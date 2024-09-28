@@ -61,22 +61,18 @@
     {
       icon: 'person',
       title: 'SUBIR DOCUMENTACIÓN',
-      done: true,
     },
     {
-      icon: 'person',
-      title: 'SUBIR DOCUMENTACIÓN',
-      done: true,
+      icon: 'email',
+      title: 'FIRMA DEL CONTRATO',
     },
     {
-      icon: 'person',
-      title: 'SUBIR DOCUMENTACIÓN',
-      done: false,
+      icon: 'phone',
+      title: 'GESTIÓN DE LA HIPOTECA',
     },
     {
-      icon: 'person',
-      title: 'SUBIR DOCUMENTACIÓN',
-      done: false,
+      icon: 'valuation',
+      title: 'FIRMA DE LA ESCRITURA PÚBLICA',
     },
   ]
 </script>
@@ -115,7 +111,7 @@
     importName="import Progress Steps from '@/components/miscellaneous/ProgressSteps.svelte'"
     attributes={{ done: true, responsive: false, expand: true }}
   >
-    <ProgressSteps steps={stepsData} />
+    <ProgressSteps steps={stepsData} currentStep={2} />
   </Component>
 
   <div class="auto-columns wide">
