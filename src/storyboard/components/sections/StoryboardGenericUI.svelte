@@ -20,6 +20,7 @@
   import LeadCard from '@/components/generic-ui/LeadCard.svelte'
   import Chart from '@/components/generic-ui/Chart.svelte'
   import Calendar from '@/components/generic-ui/Calendar.svelte'
+  import WarningBox from '@/components/generic-ui/WarningBox.svelte'
   import ProgressSteps from '@/components/miscellaneous/ProgressSteps.svelte'
 
   let modal: boolean = false
@@ -252,6 +253,13 @@
     </Component>
 
     <Component name="Opinions.svelte" importName="import Opinions from '@/components/generic-ui/Opinions.svelte'">Opinions</Component>
+
+    <Component name="WarningBox.svelte" importName="import WarningBox from '@/components/generic-ui/WarningBox.svelte'">
+      <WarningBox>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolore, consequuntur dignissimos repudiandae accusantium numquam,
+        minima officiis itaque temporibus corrupti voluptates id excepturi animi incidunt. Eius odio sint saepe eos.
+      </WarningBox>
+    </Component>
 
     <Component name="Slider.svelte" importName="import Slider from '@/components/generic-ui/Slider.svelte'">
       <Slider>
