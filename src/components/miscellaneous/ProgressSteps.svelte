@@ -7,7 +7,11 @@
   }
 
   export let steps: IStep[] = []
-  export let currentStep: number = 1
+  export let currentStep: number = 4
+
+  let HTMLbg: HTMLElement
+  //animation-delay = 0 --> (+1.5) * doneSteps
+  //for(let i ; i == doneSteps ; i++) {animation-delay = animation-delay + 1.5} seguir investigando attr()
 </script>
 
 <style lang="scss">
@@ -48,7 +52,7 @@
         background-color: var(--colorBase);
       }
 
-      &.done {
+      &.doneStep {
         :global(svg) {
           border: 2px solid var(--colorBrand);
           background-color: var(--colorBrand);
@@ -82,20 +86,51 @@
       border-radius: 50px;
 
       &:nth-child(1) {
-        background: linear-gradient(to right, rgba(68, 161, 156, 0), var(--colorBrand));
+        background: linear-gradient(to right, rgba(68, 161, 156, 0), rgba(68, 161, 156, 0.5));
+
+        .bg {
+          animation: 2s progress;
+          height: 100%;
+          background: linear-gradient(to right, rgba(68, 161, 156, 0.2), var(--colorBrand));
+        }
       }
 
-      &.last {
+      &.doneLine {
+        background-color: rgba(68, 161, 156, 0.5);
+
+        .bg {
+          animation-name: progress;
+          animation-duration: 2s;
+          animation-delay: 1.5s;
+          height: 100%;
+          width: 0%;
+          background: var(--colorBrand);
+        }
+      }
+
+      &.post {
         opacity: 0.5;
       }
+    }
+  }
+
+  @keyframes progress {
+    0% {
+      width: 0%;
+    }
+
+    100% {
+      width: 100%;
     }
   }
 </style>
 
 <div class="progress-steps">
   {#each steps as step, i}
-    <div class="line" class:last={i + 1 > currentStep} />
-    <div class="step" class:done={i + 1 < currentStep} class:current={i + 1 === currentStep}>
+    <div class="line" class:post={i + 1 > currentStep} class:doneLine={i + 1 <= currentStep && i + 1 != 1}>
+      <div class="bg" nStep={i + 0.5} />
+    </div>
+    <div class="step" class:doneStep={i + 1 < currentStep} class:current={i + 1 === currentStep}>
       <Svg name={i + 1 < currentStep ? 'tick' : step.icon} width="50" height="50" fill="var(--colorBrand)" />
 
       <div class="title">{step.title}</div>

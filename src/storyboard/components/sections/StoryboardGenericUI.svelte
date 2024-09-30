@@ -111,7 +111,7 @@
     importName="import Progress Steps from '@/components/miscellaneous/ProgressSteps.svelte'"
     attributes={{ done: true, responsive: false, expand: true }}
   >
-    <ProgressSteps steps={stepsData} currentStep={2} />
+    <ProgressSteps steps={stepsData} />
   </Component>
 
   <div class="auto-columns wide">
