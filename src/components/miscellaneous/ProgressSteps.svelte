@@ -9,22 +9,22 @@
 
   export let steps: IStep[] = []
   export let currentStep: number = 3
-  let animationStep = 1
+  currentStep--
+
+  let HTMLProgressSteps: HTMLElement
 
   //animation-delay = 0 --> (+1.5) * doneSteps
   //for(let i ; i == doneSteps ; i++) {animation-delay = animation-delay + 1.5} seguir investigando attr()
 
   onMount(() => {
-    document.querySelectorAll('.line .bg').forEach((HTMLbg: HTMLElement, index) => {
-      let delayBG = index
-      HTMLbg.style.animationDelay = `${delayBG}s`
-    })
+    const steps = [...HTMLProgressSteps.children]
 
-    setInterval(() => {
-      if (animationStep < currentStep) {
-        animationStep++
-      }
-    }, 1000)
+    steps.forEach((step, index) => {
+      setTimeout(() => {
+        if (index < currentStep) step.classList.add('completed')
+        if (index === currentStep) step.classList.add('current')
+      }, 1000 * index)
+    })
   })
 </script>
 
@@ -37,103 +37,129 @@
     justify-content: center;
     padding-bottom: 45px;
     margin: 20px 0;
-    .step {
+
+    .step-container {
       display: flex;
       align-items: center;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1;
-      .title {
-        position: absolute;
-        color: var(--colorBrand);
-        font-size: 12px;
-        max-width: 125px;
-        text-align: center;
-        opacity: 0.5;
-        bottom: 0;
+
+      &.completed {
+        .step {
+          :global(.svg-icon) {
+            opacity: 0;
+          }
+
+          :global(.svg-tick) {
+            opacity: 1;
+          }
+        }
+
+        .line {
+          .animation-color {
+            width: 100%;
+          }
+        }
       }
-      :global(svg) {
+
+      &.current {
+        .step {
+          :global(.svg-icon) {
+            border: 1px solid var(--colorBrand);
+            transform: scale(1.5);
+            opacity: 1;
+          }
+          .title {
+            opacity: 1;
+            bottom: -10px;
+          }
+        }
+
+        .line {
+          .animation-color {
+            width: 100%;
+          }
+        }
+      }
+
+      .step {
         display: flex;
         align-items: center;
-        border-radius: 100%;
-        padding: 10px;
-        opacity: 0.5;
-        background-color: var(--colorBase);
-      }
-      &.doneStep {
-        :global(svg) {
-          border: 2px solid var(--colorBrand);
-          background-color: var(--colorBrand);
-          opacity: 1;
-        }
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1;
+
         .title {
+          position: absolute;
+          color: var(--colorBrand);
+          font-size: 12px;
+          max-width: 125px;
+          text-align: center;
+          opacity: 0.5;
+          bottom: 0;
+          transition: 0.5s ease 1s;
+        }
+        :global(svg) {
+          transition: 0.5s ease 1s;
+
+          display: flex;
+          align-items: center;
+          border-radius: 100%;
+          padding: 10px;
+          opacity: 0.5;
+          background-color: var(--colorBase);
+        }
+
+        :global(.svg-tick) {
+          position: absolute;
+          background-color: var(--colorBrand);
+          opacity: 0;
+        }
+      }
+      .line {
+        position: relative;
+        height: 2px;
+        width: 75px;
+        border-radius: 50px;
+
+        .bg {
+          position: absolute;
+          background-color: var(--colorBrand);
+          width: 100%;
+          height: 100%;
           opacity: 0.5;
         }
-      }
-      &.current {
-        :global(svg) {
-          border: 2px solid var(--colorBrand);
-          transform: scale(1.5);
-          opacity: 1;
-        }
-        .title {
-          font-size: 13px;
-          opacity: 1;
-          bottom: -15px;
-        }
-      }
-    }
-    .line {
-      height: 2.5px;
-      width: 75px;
-      background-color: var(--colorBrand);
-      border-radius: 50px;
 
-      &:nth-child(1) {
-        background: linear-gradient(to right, rgba(68, 161, 156, 0), rgba(68, 161, 156, 0.5));
-        .bg {
-          animation: 1s progress;
-          height: 100%;
-          background: linear-gradient(to right, rgba(68, 161, 156, 0.2), var(--colorBrand));
-          animation-timing-function: linear;
-        }
-      }
-      &.doneLine {
-        background-color: rgba(68, 161, 156, 0.5);
-        .bg {
-          animation-name: progress;
-          animation-duration: 1s;
-          height: 100%;
+        .animation-color {
+          position: absolute;
+          background-color: var(--colorBrand);
           width: 0%;
-          background: var(--colorBrand);
-          animation-timing-function: linear;
-          animation-fill-mode: forwards;
+          height: 100%;
+          transition: 1s ease;
         }
       }
-      &.post {
-        opacity: 0.5;
+
+      &:nth-child(1) .line {
+        .bg,
+        .animation-color {
+          background: linear-gradient(to right, rgba(68, 161, 156, 0), var(--colorBrand));
+        }
       }
-    }
-  }
-  @keyframes progress {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 100%;
     }
   }
 </style>
 
-<div class="progress-steps">
+<div class="progress-steps" bind:this={HTMLProgressSteps}>
   {#each steps as step, i}
-    <div class="line" class:post={i + 1 > animationStep} class:doneLine={i + 1 <= animationStep && i + 1 != 1}>
-      <div class="bg" />
-    </div>
-    <div class="step" class:doneStep={i + 1 < animationStep} class:current={i + 1 === animationStep}>
-      <Svg name={i + 1 < animationStep ? 'tick' : step.icon} width="50" height="50" fill="var(--colorBrand)" />
+    <div class="step-container">
+      <div class="line">
+        <div class="animation-color" />
+        <div class="bg" />
+      </div>
+      <div class="step">
+        <Svg name="tick" width="50" height="50" className="svg-tick" />
+        <Svg name={step.icon} width="50" height="50" fill="var(--colorBrand)" className="svg-icon" />
 
-      <div class="title">{step.title}</div>
+        <div class="title">{step.title}</div>
+      </div>
     </div>
   {/each}
 </div>
